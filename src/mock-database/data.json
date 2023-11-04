@@ -1,0 +1,302 @@
+[
+  {
+    "courseId": "cs1000",
+    "pet": "Cat",
+    "modules": [
+      {
+        "title": "Week 1 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "/cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "/cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "/cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 2 - Introduction to cat language",
+        "items": [
+          {
+            "title": "Letter a",
+            "slug": "cat-lang-letter-a"
+          },
+          {
+            "title": "Letter e",
+            "slug": "cat-lang-letter-e"
+          },
+          {
+            "title": "Letter i",
+            "slug": "cat-lang-letter-i"
+          },
+          {
+            "title": "Letter o",
+            "slug": "cat-lang-letter-o"
+          },
+          {
+            "title": "Letter u",
+            "slug": "cat-lang-letter-u"
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Draw a cat",
+        "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
+        "dueDate": "11/05/2023"
+      },
+      {
+        "title": "Cat language Assignment 3",
+        "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
+        "dueDate": "11/07/2023"
+      }
+    ]
+  },
+  {
+    "courseId": "cs2000",
+    "pet": "Dog",
+    "modules": [
+      {
+        "title": "Week 1 - Introduction to dog anatomy",
+        "items": [
+          {
+            "title": "Dog arm",
+            "slug": "/dog-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "/cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "/cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 2 - Introduction to cat language",
+        "items": [
+          {
+            "title": "Letter a",
+            "slug": "cat-lang-letter-a"
+          },
+          {
+            "title": "Letter e",
+            "slug": "cat-lang-letter-e"
+          },
+          {
+            "title": "Letter i",
+            "slug": "cat-lang-letter-i"
+          },
+          {
+            "title": "Letter o",
+            "slug": "cat-lang-letter-o"
+          },
+          {
+            "title": "Letter u",
+            "slug": "cat-lang-letter-u"
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Draw a cat",
+        "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
+        "dueDate": "11/05/2023"
+      },
+      {
+        "title": "Cat language Assignment 3",
+        "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
+        "dueDate": "11/07/2023"
+      }
+    ]
+  },
+  {
+    "courseId": "cs3000",
+    "pet": "Parrot",
+    "modules": [
+      {
+        "title": "Week 1 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "/cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "/cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "/cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 2 - Introduction to cat language",
+        "items": [
+          {
+            "title": "Letter a",
+            "slug": "cat-lang-letter-a"
+          },
+          {
+            "title": "Letter e",
+            "slug": "cat-lang-letter-e"
+          },
+          {
+            "title": "Letter i",
+            "slug": "cat-lang-letter-i"
+          },
+          {
+            "title": "Letter o",
+            "slug": "cat-lang-letter-o"
+          },
+          {
+            "title": "Letter u",
+            "slug": "cat-lang-letter-u"
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Draw a cat",
+        "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
+        "dueDate": "11/05/2023"
+      },
+      {
+        "title": "Cat language Assignment 3",
+        "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
+        "dueDate": "11/07/2023"
+      }
+    ]
+  },
+  {
+    "courseId": "cs4000",
+    "pet": "Duck",
+    "modules": [
+      {
+        "title": "Week 1 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "/cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "/cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "/cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 2 - Introduction to cat language",
+        "items": [
+          {
+            "title": "Letter a",
+            "slug": "cat-lang-letter-a"
+          },
+          {
+            "title": "Letter e",
+            "slug": "cat-lang-letter-e"
+          },
+          {
+            "title": "Letter i",
+            "slug": "cat-lang-letter-i"
+          },
+          {
+            "title": "Letter o",
+            "slug": "cat-lang-letter-o"
+          },
+          {
+            "title": "Letter u",
+            "slug": "cat-lang-letter-u"
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Draw a cat",
+        "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
+        "dueDate": "11/05/2023"
+      },
+      {
+        "title": "Cat language Assignment 3",
+        "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
+        "dueDate": "11/07/2023"
+      }
+    ]
+  },
+  {
+    "courseId": "cs5000",
+    "pet": "Hippo",
+    "modules": [
+      {
+        "title": "Week 1 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "/cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "/cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "/cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 2 - Introduction to cat language",
+        "items": [
+          {
+            "title": "Letter a",
+            "slug": "cat-lang-letter-a"
+          },
+          {
+            "title": "Letter e",
+            "slug": "cat-lang-letter-e"
+          },
+          {
+            "title": "Letter i",
+            "slug": "cat-lang-letter-i"
+          },
+          {
+            "title": "Letter o",
+            "slug": "cat-lang-letter-o"
+          },
+          {
+            "title": "Letter u",
+            "slug": "cat-lang-letter-u"
+          }
+        ]
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Draw a cat",
+        "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
+        "dueDate": "11/05/2023"
+      },
+      {
+        "title": "Cat language Assignment 3",
+        "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
+        "dueDate": "11/07/2023"
+      }
+    ]
+  }
+]
