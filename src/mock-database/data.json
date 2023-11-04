@@ -8,15 +8,15 @@
         "items": [
           {
             "title": "Cat arm",
-            "slug": "/cat-arm"
+            "slug": "cat-arm"
           },
           {
             "title": "Cat leg",
-            "slug": "/cat-leg"
+            "slug": "cat-leg"
           },
           {
             "title": "Cat face",
-            "slug": "/cat-face"
+            "slug": "cat-face"
           }
         ]
       },
@@ -72,11 +72,11 @@
           },
           {
             "title": "Cat leg",
-            "slug": "/cat-leg"
+            "slug": "cat-leg"
           },
           {
             "title": "Cat face",
-            "slug": "/cat-face"
+            "slug": "cat-face"
           }
         ]
       },
@@ -128,15 +128,15 @@
         "items": [
           {
             "title": "Cat arm",
-            "slug": "/cat-arm"
+            "slug": "cat-arm"
           },
           {
             "title": "Cat leg",
-            "slug": "/cat-leg"
+            "slug": "cat-leg"
           },
           {
             "title": "Cat face",
-            "slug": "/cat-face"
+            "slug": "cat-face"
           }
         ]
       },
@@ -188,15 +188,15 @@
         "items": [
           {
             "title": "Cat arm",
-            "slug": "/cat-arm"
+            "slug": "cat-arm"
           },
           {
             "title": "Cat leg",
-            "slug": "/cat-leg"
+            "slug": "cat-leg"
           },
           {
             "title": "Cat face",
-            "slug": "/cat-face"
+            "slug": "cat-face"
           }
         ]
       },
@@ -248,15 +248,15 @@
         "items": [
           {
             "title": "Cat arm",
-            "slug": "/cat-arm"
+            "slug": "cat-arm"
           },
           {
             "title": "Cat leg",
-            "slug": "/cat-leg"
+            "slug": "cat-leg"
           },
           {
             "title": "Cat face",
-            "slug": "/cat-face"
+            "slug": "cat-face"
           }
         ]
       },
