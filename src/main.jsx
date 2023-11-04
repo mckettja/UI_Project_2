@@ -6,13 +6,19 @@ import "./global.css";
 import { HomePage } from "./HomePage";
 import { getAllCourses, getCourseData } from "./mock-database/mock-database";
 import { CourseLayout } from "./CourseLayout";
+import { AssignmentListPage } from "./AssignmentListPage";
 import { AssignmentPage } from "./AssignmentPage";
 
 const courseInfoLoader = (courseId, tabName) => {
   const data = getCourseData(courseId);
-  console.log("=====", data);
   if (!data) return null;
   return { [tabName]: data[tabName] };
+};
+
+const assignmentLoader = (courseId, assignmentSlug) => {
+  const data = getCourseData(courseId);
+  if (!data) return null;
+  return data.assignments.filter((as) => as.slug === assignmentSlug)[0] ?? null;
 };
 
 const router = createBrowserRouter([
@@ -41,12 +47,18 @@ const router = createBrowserRouter([
             path: "/:courseId/assignments",
             index: true,
             loader: ({ params }) => courseInfoLoader(params.courseId, "assignments"),
+            element: <AssignmentListPage />
+          },
+          {
+            path: "/:courseId/assignments/:assignmentSlug",
+            index: true,
+            loader: ({ params }) => assignmentLoader(params.courseId, params.assignmentSlug),
             element: <AssignmentPage />
           },
           {
             path: "/:courseId/pages/:pageId",
             index: true,
-            element: <div>This is a page</div>
+            element: <div>This is a page from module</div>
           }
         ]
       }
