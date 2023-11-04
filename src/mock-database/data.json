@@ -50,12 +50,14 @@
       {
         "title": "Draw a cat",
         "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
-        "dueDate": "11/05/2023"
+        "dueDate": "11/05/2023",
+        "slug": "draw-a-cat"
       },
       {
         "title": "Cat language Assignment 3",
         "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
-        "dueDate": "11/07/2023"
+        "dueDate": "11/07/2023",
+        "slug": "lang-assignment-3"
       }
     ]
   },
@@ -172,12 +174,14 @@
       {
         "title": "Draw a cat",
         "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
-        "dueDate": "11/05/2023"
+        "dueDate": "11/05/2023",
+        "slug": "draw-a-cat"
       },
       {
         "title": "Cat language Assignment 3",
         "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
-        "dueDate": "11/07/2023"
+        "dueDate": "11/07/2023",
+        "slug": "lang-assignment-3"
       }
     ]
   },
@@ -232,12 +236,14 @@
       {
         "title": "Draw a cat",
         "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
-        "dueDate": "11/05/2023"
+        "dueDate": "11/05/2023",
+        "slug": "draw-a-cat"
       },
       {
         "title": "Cat language Assignment 3",
         "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
-        "dueDate": "11/07/2023"
+        "dueDate": "11/07/2023",
+        "slug": "lang-assignment-3"
       }
     ]
   },
@@ -292,12 +298,14 @@
       {
         "title": "Draw a cat",
         "description": "The cat should have 2 eyes, 4 legs, and is sleeping on a comfy pillow",
-        "dueDate": "11/05/2023"
+        "dueDate": "11/05/2023",
+        "slug": "draw-a-cat"
       },
       {
         "title": "Cat language Assignment 3",
         "description": "Practice Cat language letter A, E, I, O, U.\nSubmit a sentence formed using these letters and a video of pronuncication",
-        "dueDate": "11/07/2023"
+        "dueDate": "11/07/2023",
+        "slug": "lang-assignment-3"
       }
     ]
   }

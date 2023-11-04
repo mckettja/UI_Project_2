@@ -45,19 +45,16 @@ const router = createBrowserRouter([
           },
           {
             path: "/:courseId/assignments",
-            index: true,
             loader: ({ params }) => courseInfoLoader(params.courseId, "assignments"),
             element: <AssignmentListPage />
           },
           {
             path: "/:courseId/assignments/:assignmentSlug",
-            index: true,
             loader: ({ params }) => assignmentLoader(params.courseId, params.assignmentSlug),
             element: <AssignmentPage />
           },
           {
             path: "/:courseId/pages/:pageId",
-            index: true,
             element: <div>This is a page from module</div>
           }
         ]
