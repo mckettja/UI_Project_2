@@ -1,7 +1,7 @@
 [
   {
     "courseId": "cs1000",
-    "courseAnimal": ["images/DogSad.png", "images/DogNeutral.png", "images/DogHappy.png"],
+    "courseAnimal": ["/images/DogSad.png", "/images/DogNeutral.png", "/images/DogHappy.png"],
     "pet": "Dog",
     "modules": [
       {
@@ -64,7 +64,7 @@
   },
   {
     "courseId": "cs2000",
-    "courseAnimal": ["images/KoalaSad.png", "images/KoalaNeutral.png", "images/KoalaHappy.png"],
+    "courseAnimal": ["/images/KoalaSad.png", "/images/KoalaNeutral.png", "/images/KoalaHappy.png"],
     "pet": "Koala",
     "modules": [
       {
@@ -127,7 +127,7 @@
   },
   {
     "courseId": "cs3000",
-    "courseAnimal": ["images/PigSad.png", "images/PigNeutral.png", "images/PigHappy.png"],
+    "courseAnimal": ["/images/PigSad.png", "/images/PigNeutral.png", "/images/PigHappy.png"],
     "pet": "Pig",
     "modules": [
       {
@@ -190,7 +190,7 @@
   },
   {
     "courseId": "cs4000",
-    "courseAnimal": ["images/CatSad.png", "images/CatNeutral.png", "images/CatHappy.png"],
+    "courseAnimal": ["/images/CatSad.png", "/images/CatNeutral.png", "/images/CatHappy.png"],
     "pet": "Cat",
     "modules": [
       {
@@ -253,7 +253,7 @@
   },
   {
     "courseId": "cs5000",
-    "courseAnimal": ["images/FrogSad.png", "images/FrogNeutral.png", "images/FrogHappy.png"],
+    "courseAnimal": ["/images/FrogSad.png", "/images/FrogNeutral.png", "/images/FrogHappy.png"],
     "pet": "Frog",
     "modules": [
       {
