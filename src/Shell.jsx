@@ -6,7 +6,7 @@ export function Shell() {
 
   return (
     <>
-      <header className="h-20 border-2 border-red-300 flex justify-between items-center px-8">
+      <header className=" border-2 border-red-300 flex justify-between items-center px-8">
         <Link to="/">Profile</Link>
         <NavBar courseList={allCourses} />
       </header>
