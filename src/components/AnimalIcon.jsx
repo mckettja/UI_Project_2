@@ -65,7 +65,7 @@ const AnimalIcon = ({ imageUrl, text, link}) => {
               style={progressBarStyle}
             />
             <button onClick={handleButtonClick}>
-              <img src={"images/add.png"} alt="Animal" style={imageStyle} />
+              <img src={"/images/add.png"} alt="Animal" style={imageStyle} />
             </button>
           </div>
         </div>
