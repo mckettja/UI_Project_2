@@ -1,7 +1,8 @@
 [
   {
     "courseId": "cs1000",
-    "pet": "Cat",
+    "courseAnimal": ["images/DogSad.png", "images/DogNeutral.png", "images/DogHappy.png"],
+    "pet": "Dog",
     "modules": [
       {
         "title": "Week 1 - Introduction to cat anatomy",
@@ -63,7 +64,8 @@
   },
   {
     "courseId": "cs2000",
-    "pet": "Dog",
+    "courseAnimal": ["images/KoalaSad.png", "images/KoalaNeutral.png", "images/KoalaHappy.png"],
+    "pet": "Koala",
     "modules": [
       {
         "title": "Week 1 - Introduction to dog anatomy",
@@ -125,13 +127,14 @@
   },
   {
     "courseId": "cs3000",
-    "pet": "Parrot",
+    "courseAnimal": ["images/PigSad.png", "images/PigNeutral.png", "images/PigHappy.png"],
+    "pet": "Pig",
     "modules": [
       {
-        "title": "Week 1 - Introduction to cat anatomy",
+        "title": "Week 1 - Introduction to parrot anatomy",
         "items": [
           {
-            "title": "Cat arm",
+            "title": "Parrot arm",
             "slug": "cat-arm"
           },
           {
@@ -187,13 +190,14 @@
   },
   {
     "courseId": "cs4000",
-    "pet": "Duck",
+    "courseAnimal": ["images/CatSad.png", "images/CatNeutral.png", "images/CatHappy.png"],
+    "pet": "Cat",
     "modules": [
       {
-        "title": "Week 1 - Introduction to cat anatomy",
+        "title": "Week 1 - Introduction to duck anatomy",
         "items": [
           {
-            "title": "Cat arm",
+            "title": "Duck arm",
             "slug": "cat-arm"
           },
           {
@@ -249,13 +253,14 @@
   },
   {
     "courseId": "cs5000",
-    "pet": "Hippo",
+    "courseAnimal": ["images/FrogSad.png", "images/FrogNeutral.png", "images/FrogHappy.png"],
+    "pet": "Frog",
     "modules": [
       {
-        "title": "Week 1 - Introduction to cat anatomy",
+        "title": "Week 1 - Introduction to hippo anatomy",
         "items": [
           {
-            "title": "Cat arm",
+            "title": "Hippo arm",
             "slug": "cat-arm"
           },
           {

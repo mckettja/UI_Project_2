@@ -9,6 +9,6 @@ export const getCourseData = (courseId) => {
 };
 
 export const getAllCourses = () => {
-  const result = data.map((course) => ({ courseId: course.courseId, pet: course.pet }));
+  const result = data.map((course) => ({ courseId: course.courseId, pet: course.pet, courseAnimal: course.courseAnimal }));
   return result
 };

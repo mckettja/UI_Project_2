@@ -1,12 +1,27 @@
-import { Link } from "react-router-dom";
+import AnimalIcon from './AnimalIcon';
 
 export const NavBar = ({ courseList }) => {
+
+  const navbarStyle = {
+    /*
+    position: 'fixed', 
+    top: 0,            
+    left: 0,           
+    width: '100%',     
+    zIndex: 1,  
+    */    
+  };
+
   return (
-    <nav className="h-full flex flex-1 justify-center border-2 border-purple-500">
-      <ul className="flex gap-3 items-center">
+    <nav style={navbarStyle} className="h-full flex flex-1 justify-center border-2 border-purple-500">
+      <ul className="flex gap-3 items-start">
         {courseList.map((course) => (
-          <li className="border-2 border-rose-400 p-6">
-            <Link to={`${course.courseId}`}>{course.pet}</Link>
+          <li key={course.courseId} className="border-2 border-rose-400 p-0">
+            <AnimalIcon
+              imageUrl={course.courseAnimal}
+              text={course.courseId}
+              link= {course.courseId}
+            />
           </li>
         ))}
       </ul>
