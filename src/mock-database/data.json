@@ -18,6 +18,42 @@
           {
             "title": "Cat face",
             "slug": "cat-face"
+          },
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          },
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          },
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
           }
         ]
       },
@@ -43,6 +79,57 @@
           {
             "title": "Letter u",
             "slug": "cat-lang-letter-u"
+          }
+        ]
+      },
+      {
+        "title": "Week 3 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 4 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Week 5 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
           }
         ]
       }
