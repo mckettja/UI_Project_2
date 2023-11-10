@@ -8,11 +8,11 @@ export const CourseLayout = () => {
     <main className="grid grid-cols-[7%_1fr_auto] px-8 gap-12">
       <nav>
         <ul className="flex flex-col gap-3 py-6">
-          {["Home", "Assignments"].map((tabName) => (
+          {["Modules", "Assignments", "Syllabus", "Grades", "Zoom", "Announcements"].map((tabName) => (
             <li className="hover:font-bold hover:underline">
               <NavLink
                 end
-                to={`${tabName === "Home" ? "" : tabName.toLowerCase()}`}
+                to={`${tabName === "Modules" ? "" : tabName.toLowerCase()}`}
                 className={({ isActive }) => `${isActive ? "font-bold" : ""}`}
               >
                 {tabName}

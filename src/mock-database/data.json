@@ -5,7 +5,7 @@
     "pet": "Dog",
     "modules": [
       {
-        "title": "Week 1 - Introduction to cat anatomy",
+        "title": "Module 1 - Introduction to cat anatomy",
         "items": [
           {
             "title": "Cat arm",
@@ -58,7 +58,7 @@
         ]
       },
       {
-        "title": "Week 2 - Introduction to cat language",
+        "title": "Module 2 - Introduction to cat language",
         "items": [
           {
             "title": "Letter a",
@@ -83,7 +83,7 @@
         ]
       },
       {
-        "title": "Week 3 - Introduction to cat anatomy",
+        "title": "Module 3 - Introduction to cat anatomy",
         "items": [
           {
             "title": "Cat arm",
@@ -100,7 +100,7 @@
         ]
       },
       {
-        "title": "Week 4 - Introduction to cat anatomy",
+        "title": "Module 4 - Introduction to cat anatomy",
         "items": [
           {
             "title": "Cat arm",
@@ -117,7 +117,7 @@
         ]
       },
       {
-        "title": "Week 5 - Introduction to cat anatomy",
+        "title": "Module 5 - Introduction to cat anatomy",
         "items": [
           {
             "title": "Cat arm",
