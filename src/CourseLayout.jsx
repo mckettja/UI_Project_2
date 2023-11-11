@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { RightSidebar } from "./components/RightSidebar";
 
 export const CourseLayout = () => {
-  const { assignments } = useLoaderData();
+  const assignments = useLoaderData();
 
   return (
     <main className="grid grid-cols-[7%_1fr_auto] px-8 gap-12">

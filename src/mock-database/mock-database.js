@@ -1,26 +1,17 @@
-import data from "./data.json";
-
-export const getAllCourses = () => {
-  const result = data.map((course) => ({
-    courseId: course.courseId,
-    pet: course.pet,
-    courseAnimal: course.courseAnimal,
-  }));
-  return result;
-};
-
 /**
  * @typedef {Object} Course
- * @property {string} id - Id code of the course, e.g. cs1230
- * @property {string} name - Name of course
+ * @property {string} id - Id code of the course, e.g. ui, senior-design
+ * @property {string} title - Title of the course
+ * @property {string} code - Number code of course, e.g. cs1000
  * @property {string} pet - Pet of the course
+ * @property {string[]} imageUrls
  * @property {string} code - Class code
  * @property {Array<ModuleItem | AssignmentItem | SyllabusItem | PresentationItem>} items
  */
 
 /**
  * @typedef {Object} ModuleItem
- * @property {string} name - file name of the item
+ * @property {string} name - File name of the item
  * @property {string} folder - folder location
  * @property {'module'} type
  * @property {string} module - the module this assignment belongs to
@@ -28,7 +19,7 @@ export const getAllCourses = () => {
 
 /**
  * @typedef {Object} AssignmentItem
- * @property {string} name - file name of the item
+ * @property {string} name - File name of the item
  * @property {string} title - Title of the assignment
  * @property {string} folder - folder location
  * @property {'assignment'} type
@@ -39,7 +30,7 @@ export const getAllCourses = () => {
 
 /**
  * @typedef {Object} SyllabusItem
- * @property {string} name - file name of the item
+ * @property {string} name - File name of the item
  * @property {string} title - Title of the syllabus
  * @property {string} folder - folder location
  * @property {'syllabus'} type
@@ -47,7 +38,7 @@ export const getAllCourses = () => {
 
 /**
  * @typedef {Object} PageItem
- * @property {string} name - file name of the item
+ * @property {string} name - File name of the item
  * @property {string} folder - folder location
  * @property {string} title - Title of the page
  * @property {inclass' | 'tutorial'} type
@@ -63,12 +54,26 @@ export const getAllCourses = () => {
  * @property {string} module - name of the ModuleItem this assignment belongs to
  */
 
+
+export const getAllCourses = async () => {
+  const courseIds = ['ui']
+  return Promise.all(courseIds.map(async id => {
+    const data = await getCourseData(id)
+    return {
+      id: data.id,
+      imageUrls: data.imageUrls,
+      code: data.code,
+      title: data.title
+    }
+  }))
+}
+
 /**
  * @param  {string} courseId
  */
 export const getCourseData = async (courseId) => {
   /**@type {Course} */
-  const data = await import(`./course-data/${courseId}.json`);
+  const data = (await import(`./course-data/${courseId}/${courseId}.json`)).default;
   return data;
 };
 
@@ -96,12 +101,9 @@ export const getCourseModules = async (courseId) => {
  */
 export const getCourseSyllabus = async (courseId) => {
   const courseData = await getCourseData(courseId);
-  /** @type {SyllabusItem[]} */
-  const syllabusItems = courseData.items.filter((i) => i.type === "syllabus");
-  if (syllabusItems.length > 0) {
-    return syllabusItems[0];
-  }
-  return null;
+  /** @type {SyllabusItem | undefined} */
+  const syllabusItem = courseData.items.find((i) => i.type === "syllabus");
+  return syllabusItem ?? null
 };
 
 /**
@@ -115,3 +117,20 @@ export const getCourseAssignments = async (courseId) => {
   );
   return assignmentItems;
 };
+
+/**
+ * @param  {string} courseId
+ * @param  {string} itemName
+ * @param  {'assignment' | 'syllabus' | 'inclass' | 'tutorial'} type
+ * 
+ */
+export const getPageContent = async (courseId, itemName) => {
+  const courseData = await getCourseData(courseId);
+  const item = courseData.items.find(i => i.name === itemName)
+  if (!item) {
+    return ""
+  }
+  /** @type string */
+  const textContent = (await import(`./course-data/${courseId}/${item.folder}/${item.name}.html?raw`)).default
+  return textContent
+}

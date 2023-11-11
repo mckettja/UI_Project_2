@@ -6,13 +6,13 @@ export const RightSidebar = ({ assignmentList }) => {
   return (
     <aside className="py-6  w-72">
       {assignmentList.map((assignment) => (
-        <Card key={assignment.slug} className="mb-3" style={{ padding: '10px' }}>
+        <Card key={assignment.name} className="mb-3" style={{ padding: '10px' }}>
           <Card.Body>
             <Card.Title>{assignment.title}</Card.Title>
             <div style={{ border: '1px solid #ddd', padding: '8px', marginBottom: '10px' }}>
-              <Card.Text>{assignment.description}</Card.Text>
+              <Card.Text>{assignment.name}</Card.Text>
             </div>
-            <Link to={`assignments/${assignment.slug}`}>
+            <Link to={`assignments/${assignment.name}`}>
               <Button variant="primary" style={{ backgroundColor: '#007bff' }}>
                 Submission Page
               </Button>
@@ -20,7 +20,7 @@ export const RightSidebar = ({ assignmentList }) => {
           </Card.Body>
         </Card>
       ))}
-    </aside>
+      </aside>
   );
 };
 
