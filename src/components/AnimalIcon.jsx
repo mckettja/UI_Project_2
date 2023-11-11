@@ -70,7 +70,7 @@ const AnimalIcon = ({ imageUrl, text, link}) => {
           </div>
         </div>
       </div>
-      <Link to={link} style={{ ...textStyle, display: 'block', textAlign: 'center' }}>
+      <Link to={link} className="no-underline text-black hover:underline" style={{ ...textStyle, display: 'block', textAlign: 'center' }}>
       {text}
       <div>
       {`Treats: ${treatNum}`}

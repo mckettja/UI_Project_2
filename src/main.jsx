@@ -2,6 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AssignmentListPage } from "./AssignmentListPage";
+import { Zoom } from "./Zoom";
+import { Syllabus } from "./Syllabus";
+import { Grades } from "./Grades";
+import { Announcements } from "./Announcements";
 import { AssignmentPage } from "./AssignmentPage";
 import { CourseLayout } from "./CourseLayout";
 import "./global.css";
@@ -37,10 +41,31 @@ const router = createBrowserRouter([
             element: <AssignmentListPage />
           },
           {
+            path: "/:courseId/Announcements",
+            loader: ({ params }) => getCourseModules(params.courseId),
+            element: <Announcements />
+          },
+          {
+            path: "/:courseId/zoom",
+            loader: ({ params }) => getCourseModules(params.courseId),
+            element: <Zoom />
+          },
+          {
+            path: "/:courseId/grades",
+            loader: ({ params }) => getCourseModules(params.courseId),
+            element: <Grades />
+          },
+          {
+            path: "/:courseId/syllabus",
+            loader: ({ params }) => getCourseModules(params.courseId),
+            element: <Syllabus />
+          },
+          {
             path: "/:courseId/assignments/:assignmentName",
             loader: ({ params }) => getPageContent(params.courseId, params.assignmentName),
             element: <AssignmentPage />
           },
+          
           {
             path: "/:courseId/pages/:pageName",
             loader: ({ params }) => getPageContent(params.courseId, params.pageName),
