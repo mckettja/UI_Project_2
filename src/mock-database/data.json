@@ -5,8 +5,44 @@
     "pet": "Dog",
     "modules": [
       {
-        "title": "Week 1 - Introduction to cat anatomy",
+        "title": "Module 1 - Introduction to cat anatomy",
         "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          },
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          },
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          },
           {
             "title": "Cat arm",
             "slug": "cat-arm"
@@ -22,7 +58,7 @@
         ]
       },
       {
-        "title": "Week 2 - Introduction to cat language",
+        "title": "Module 2 - Introduction to cat language",
         "items": [
           {
             "title": "Letter a",
@@ -43,6 +79,57 @@
           {
             "title": "Letter u",
             "slug": "cat-lang-letter-u"
+          }
+        ]
+      },
+      {
+        "title": "Module 3 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Module 4 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
+          }
+        ]
+      },
+      {
+        "title": "Module 5 - Introduction to cat anatomy",
+        "items": [
+          {
+            "title": "Cat arm",
+            "slug": "cat-arm"
+          },
+          {
+            "title": "Cat leg",
+            "slug": "cat-leg"
+          },
+          {
+            "title": "Cat face",
+            "slug": "cat-face"
           }
         ]
       }
