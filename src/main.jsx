@@ -1,13 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Shell } from "./Shell";
+import { AssignmentListPage } from "./AssignmentListPage";
+import { AssignmentPage } from "./AssignmentPage";
+import { CourseLayout } from "./CourseLayout";
 import "./global.css";
 import { HomePage } from "./HomePage";
 import { getAllCourses, getCourseData } from "./mock-database/mock-database";
-import { CourseLayout } from "./CourseLayout";
-import { AssignmentListPage } from "./AssignmentListPage";
-import { AssignmentPage } from "./AssignmentPage";
+import { Shell } from "./Shell";
 
 const courseInfoLoader = (courseId, tabName) => {
   const data = getCourseData(courseId);
