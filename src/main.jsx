@@ -1,25 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Shell } from "./Shell";
-import "./global.css";
-import { HomePage } from "./HomePage";
-import { getAllCourses, getCourseData } from "./mock-database/mock-database";
-import { CourseLayout } from "./CourseLayout";
 import { AssignmentListPage } from "./AssignmentListPage";
 import { AssignmentPage } from "./AssignmentPage";
-
-const courseInfoLoader = (courseId, tabName) => {
-  const data = getCourseData(courseId);
-  if (!data) return null;
-  return { [tabName]: data[tabName] };
-};
-
-const assignmentLoader = (courseId, assignmentSlug) => {
-  const data = getCourseData(courseId);
-  if (!data) return null;
-  return data.assignments.filter((as) => as.slug === assignmentSlug)[0] ?? null;
-};
+import { CourseLayout } from "./CourseLayout";
+import "./global.css";
+import { HomePage } from "./HomePage";
+import { getAllCourses, getCourseAssignments, getCourseData, getCourseModules, getPageContent } from "./mock-database/mock-database";
+import { Shell } from "./Shell";
 
 const router = createBrowserRouter([
   {
@@ -34,27 +22,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/:courseId",
-        loader: ({ params }) => courseInfoLoader(params.courseId, "assignments"),
+        loader: ({ params }) => getCourseAssignments(params.courseId),
         element: <CourseLayout />,
         children: [
           {
             path: "/:courseId",
             index: true,
-            loader: ({ params }) => courseInfoLoader(params.courseId, "modules"),
+            loader: ({ params }) => getCourseModules(params.courseId),
             element: <HomePage />
           },
           {
             path: "/:courseId/assignments",
-            loader: ({ params }) => courseInfoLoader(params.courseId, "assignments"),
+            loader: ({ params }) => getCourseAssignments(params.courseId),
             element: <AssignmentListPage />
           },
           {
-            path: "/:courseId/assignments/:assignmentSlug",
-            loader: ({ params }) => assignmentLoader(params.courseId, params.assignmentSlug),
+            path: "/:courseId/assignments/:assignmentName",
+            loader: ({ params }) => getPageContent(params.courseId, params.assignmentName),
             element: <AssignmentPage />
           },
           {
-            path: "/:courseId/pages/:pageId",
+            path: "/:courseId/pages/:pageName",
+            loader: ({ params }) => getPageContent(params.courseId, params.pageName),
             element: <div>This is a page from module</div>
           }
         ]

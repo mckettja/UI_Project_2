@@ -1,0 +1,255 @@
+<h2><strong>Javascript introduction</strong></h2>
+<p>HTML and CSS allow you to add visual elements to your page, and set their style properties.&nbsp; You can also define some interactive behavior using CSS.&nbsp; But, to make complex pages that update in response to user inputs or new data, we need <strong>Javascript, the primary language of the web</strong>.&nbsp; We will use ES6 (6th version of the JS standard ECMAScript) which has significant upgrades compared to the previous version.&nbsp;&nbsp;</p>
+<p>We will focus initially on Javascript code that runs on the<strong> 'client side',</strong> updating visual elements on the page within the user's browser, rather than 'server-side' Javascript code.&nbsp;&nbsp;</p>
+<p>What does Javascript allow us to do?&nbsp; Javascript can connect to the DOM.&nbsp; You can access elements you created using html, to change or update them or 'listen' to the interactions users perform on these elements.&nbsp; You can also add new elements to the DOM using Javascript, appending child elements to existing page elements or to the root.&nbsp; &nbsp;</p>
+<p>What is Javascript like?&nbsp; For me, Javascript prizes flexibility and letting developers do what they want.&nbsp; It is a bit like the <span style="text-decoration: underline;">wild west</span>. &nbsp;It can be written in several styles- <span style="text-decoration: underline;">procedural, object-oriented or functional</span>.&nbsp; &nbsp;You may have never worked with a functional language before, and it may be a bit confusing at first, but it can be very powerful!&nbsp; &nbsp;Javascript is <span style="text-decoration: underline;">dynamically typed, </span>which&nbsp;means that you can change a variable from <em>string</em> to <em>int</em> to an <em>object</em> anywhere in your code, without causing an error... See- Wild West!&nbsp;</p>
+<h4><strong>Variables:</strong><strong></strong></h4>
+<p>As I mentioned above- Javascript variables are dynamically typed- you can switch a variable from an <em>int</em> to a <em>string</em> to an <em>object</em>, and no errors will be thrown.&nbsp; Be careful with this feature though, because switching variable types can lead to bugs.&nbsp; When I write code in Javascript, I don't typically find myself changing the type of my variables, because it seems like a bad idea.&nbsp; &nbsp;</p>
+<p>You also do not need to declare variables ahead of using them.&nbsp; If it encounters a variable name that has not been declared, Javascript will just create a global variable for you.&nbsp; &nbsp;Again-&nbsp; convenient but a potential source of bugs.&nbsp; This is a problem for me when I try to use a variable I declared previously, but I misspell it, and then Javascript thinks I am making a new variable.&nbsp; &nbsp;Watch for this!&nbsp;</p>
+<p>For <strong>local variables (variables you use within a block of your code, like a function call),</strong>&nbsp;I recommend you declare variables in two ways.&nbsp;</p>
+<ul>
+    <li>Use<span>&nbsp;</span><code>const</code><span> for unchanging parameters</span></li>
+    <li><span>Use </span><code>let</code><span>&nbsp;</span>whenever you need to reassign a variable.</li>
+</ul>
+<p>You may see examples online where people use&nbsp; 'var' for variables that need to be reassigned,&nbsp; and you could use var.&nbsp; I have used var for lots of my Javascript code without thinking about it.&nbsp; &nbsp;But 'let' is block scoped, so it can't be used outside of the block it is defined in, and it may allow you to avoid some issues.&nbsp; &nbsp;More details here:<span>&nbsp;</span><a class="inline_disabled external" href="https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/" target="_blank" rel="noopener"><span>https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a></p>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-c">//this is an example from: <strong> <a class="inline_disabled external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial" target="_blank" rel="noopener"><span>https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a></strong><br />// `const` keyword ensures that the variable it creates is read-only</span>
+<span class="pl-k">const</span> <span class="pl-c1">THRESHOLD</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// `let` keyword declares a block-scoped variable</span>
+<span class="pl-k">let</span> <span class="pl-s1">month</span> <span class="pl-c1">=</span> <span class="pl-s">"February"</span><span class="pl-kos">;</span>	
+
+<span class="pl-c">// Variables in JS are loosely typed</span>
+<span class="pl-k">let</span> <span class="pl-s1">day</span> <span class="pl-c1">=</span> <span class="pl-c1">4</span><span class="pl-kos">;</span>				<span class="pl-c">// Integer</span>
+<span class="pl-k">let</span> <span class="pl-s1">temperature</span> <span class="pl-c1">=</span> <span class="pl-c1">34.36</span><span class="pl-kos">;</span> 	<span class="pl-c">// Double</span>
+<span class="pl-k">let</span> <span class="pl-s1">winter</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span> 			<span class="pl-c">// Boolean</span>
+
+<span class="pl-c">// `const` does not ensure that the variable is immutable</span>
+<span class="pl-c">// the object property can change</span>
+<span class="pl-k">const</span> <span class="pl-s1">students</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> 
+	<span class="pl-c1">count</span>: <span class="pl-c1">10</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-s1">students</span><span class="pl-kos">.</span><span class="pl-c1">count</span> <span class="pl-c1">+=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> 		<span class="pl-c">// OK: count=11</span>
+<span class="pl-s1">students</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">count</span>: <span class="pl-c1">20</span> <span class="pl-kos">}</span><span class="pl-kos">;</span> 	<span class="pl-c">// Type error<br /><br /><br /></span></pre>
+    <h4><strong>To review:</strong></h4>
+    <ul>
+        <li><strong>No identifier<span>&nbsp;</span></strong>creates a variable with global scope</li>
+        <li><strong>let<span>&nbsp;</span></strong>creates a variable with block scope</li>
+        <li><strong>const<span>&nbsp;</span></strong>creates a variable with block scope, and the variable cannot be reassigned.&nbsp;&nbsp;</li>
+        <li><strong>var<span>&nbsp;</span></strong>creates a variable with function scope- which means that unless it is in a function it can be used again anywhere.&nbsp; Not what you are probably used to. This is considered old form.&nbsp;</li>
+    </ul>
+    <p><strong>So again- <span style="text-decoration: underline;">const and let are your best approaches for variable declaration.&nbsp;</span></strong></p>
+</div>
+<h4><strong>Arrays:</strong></h4>
+<p>As in other languages, arrays can store a sequence of values, and contain any type of data- integers, strings objects.&nbsp; &nbsp;The example below is going to look pretty similar to array operations in other languages.&nbsp;&nbsp;</p>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-c">//this is an example from: <strong> <a class="inline_disabled external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial" target="_blank" rel="noopener"><span>https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a></strong><br />// Array with integer values</span>
+<span class="pl-k">let</span> <span class="pl-s1">numbers</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">,</span> <span class="pl-c1">3</span><span class="pl-kos">,</span> <span class="pl-c1">100</span><span class="pl-kos">,</span> <span class="pl-c1">500</span><span class="pl-kos">,</span> <span class="pl-c1">4</span><span class="pl-kos">]</span><span class="pl-kos">;</span>	
+
+<span class="pl-c">// Array with strings</span>
+<span class="pl-k">let</span> <span class="pl-s1">fruits</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">"Orange"</span><span class="pl-kos">,</span> <span class="pl-s">"Banana"</span><span class="pl-kos">,</span> <span class="pl-s">"Apple"</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// Empty array declaration</span>
+<span class="pl-k">let</span> <span class="pl-s1">names</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// Access the elements of an array</span>
+<span class="pl-s1">fruits</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">;</span> 	<span class="pl-c">// Returns: Orange</span>
+<span class="pl-s1">fruits</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">;</span> 	<span class="pl-c">// Returns: Banana</span>
+
+<span class="pl-c">// Adding array elements</span>
+<span class="pl-s1">fruits</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s">"Mango"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>	<span class="pl-c">// adds a new element to fruits</span>
+
+<span class="pl-c">// Access the length of an array using the length attribute</span>
+<span class="pl-k">let</span> <span class="pl-s1">numberOfFruits</span> <span class="pl-c1">=</span> <span class="pl-s1">fruits</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// You can nest arrays (multidimensional)</span>
+<span class="pl-k">let</span> <span class="pl-s1">nestedNumbers</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-c1">3</span><span class="pl-kos">,</span> <span class="pl-c1">4</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-c1">5</span><span class="pl-kos">,</span> <span class="pl-c1">6</span><span class="pl-kos">]</span><span class="pl-kos">]</span><span class="pl-kos">;</span></pre>
+</div>
+<p>But, on top of these basic operations, Javascript has many convenient functions for operating on arrays.&nbsp; We are going to spend some time on these later in the course.&nbsp;&nbsp;</p>
+<h4><strong>Objects</strong></h4>
+<p>Objects in javascript can store multiple variables.&nbsp; &nbsp;You use curly brackets { } to define them, and set the properties and values.&nbsp; You can add parameters to objects on the fly, not just at declaration.&nbsp;&nbsp;</p>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-c">//this is an example from: <strong> <a class="inline_disabled external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial" target="_blank" rel="noopener"><span>https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a></strong><br />// JS object with five properties</span>
+<span class="pl-k">let</span> <span class="pl-s1">course</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+	<span class="pl-c1">id</span>: <span class="pl-s">"CS6067001"</span><span class="pl-kos">,</span>
+	<span class="pl-c1">name</span>: <span class="pl-s">"User Interface Design"</span><span class="pl-kos">,</span>
+	<span class="pl-c1">students</span>: <span class="pl-c1">30</span><span class="pl-kos">,</span>
+	<span class="pl-c1">active</span>: <span class="pl-c1">true,<br />        students: <span class="pl-kos">[</span><span class="pl-s">"Michael"</span><span class="pl-kos">,</span> <span class="pl-s">"Ann"</span><span class="pl-kos">,</span> <span class="pl-s">"James"</span><span class="pl-kos">,</span> <span class="pl-s">"Kathy"</span><span class="pl-kos">]</span> </span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// Accessing an object via dot notation, specifying the name of the property</span>
+<span class="pl-s1">course</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">;</span> 		<span class="pl-c">// Returns: <span class="pl-s">CS6067001</span></span>
+<span class="pl-s1">course</span><span class="pl-kos">.</span><span class="pl-c1">students</span><span class="pl-kos">;</span>	<span class="pl-c">// Returns: 30</span>
+
+<span class="pl-c">// We can add parameters to objects on the fly<br /></span>course.schedule = "mwf"<br />course.time = "1:25pm"
+
+<span class="pl-c">// And we can also create arrays of objects</span>
+<span class="pl-k">let</span> <span class="pl-s1">courses</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+	<span class="pl-kos">{</span> <span class="pl-c1">id</span>: <span class="pl-s">"CS101"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"Intro to CS"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+	<span class="pl-kos">{</span> <span class="pl-c1">id</span>: <span class="pl-s">"CS102"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"Intro to CS 2"</span> <span class="pl-kos">}</span>
+<span class="pl-kos">]</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// To access this data we just follow the trail of properties</span>
+<span class="pl-s1">courses</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">;</span> 	<span class="pl-c">// Returns: <span class="pl-s">CS102</span></span></pre>
+</div>
+<p>Keep in mind: [...] means array and {...} means object! <span class="screenreader-only">&nbsp;</span></p>
+<h4><a id="user-content-json-javascript-object-notation" class="anchor external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial#json-javascript-object-notation" target="_blank" rel="noopener" aria-hidden="true"></a><strong></strong></h4>
+<h4><strong>JSON (JavaScript Object Notation)</strong></h4>
+<ul>
+    <li>JSON provides a way to easily store javascript objects in a popular data-interchange format for APIs</li>
+    <li>You may load datasets in JSON format (or csv or other formats).&nbsp;</li>
+    <li>It is basically a JS object, with the only difference being that the property names are surrounded by double quotation marks.</li>
+</ul>
+<div class="highlight highlight-source-json position-relative overflow-auto">
+    <pre></pre>
+    <pre><span class="p">{</span>
+  <span class="nl">"people"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nl">"name"</span><span class="p">:</span> <span class="s2">"Alex"</span><span class="p">,</span>
+      <span class="nl">"birthYear"</span><span class="p">:</span> <span class="mi">1981</span><span class="p">,</span>
+      <span class="nl">"nationality"</span><span class="p">:</span> <span class="s2">"Austria"</span><span class="p">,</span>
+      <span class="nl">"countries"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"Austria"</span><span class="p">,</span>
+        <span class="s2">"Canada"</span><span class="p">,</span>
+        <span class="s2">"USA"</span><span class="p">,</span>
+        <span class="s2">"France"</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nl">"name"</span><span class="p">:</span> <span class="s2">"Meg"</span><span class="p">,</span>
+      <span class="nl">"birthYear"</span><span class="p">:</span> <span class="mi">1991</span><span class="p">,</span>
+      <span class="nl">"nationality"</span><span class="p">:</span> <span class="s2">"USA"</span><span class="p">,</span>
+      <span class="nl">"countries"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"USA"</span><span class="p">,</span>
+        <span class="s2">"Scotland"</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span></pre>
+</div>
+<h4><a id="user-content-control-structures--loops" class="anchor external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial#control-structures--loops" target="_blank" rel="noopener" aria-hidden="true"></a><strong>Control Structures &amp; Loops</strong></h4>
+<p>You should already be familiar with<span>&nbsp;</span><strong>control structures</strong>,<span>&nbsp;</span><strong>loops</strong><span>&nbsp;</span>and<span>&nbsp;</span><strong>functions</strong>. The following just shows some examples and the correct syntax for using those structures.</p>
+<h5><strong>If statements</strong></h5>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-k"><span class="pl-c">//this is an example from: <strong> <a class="inline_disabled external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial" target="_blank" rel="noopener"><span>https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a></strong></span><br />let</span> <span class="pl-s1">numericData</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// Regular if statement </span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">numericData</span> <span class="pl-c1">&gt;=</span> <span class="pl-c1">10</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Equal or greater than 10"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">numericData</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">numericData</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">10</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Between 0 and 10"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Less than 1"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// The ternary operator can be used as a compact alternative to an if-statement</span>
+<span class="pl-c">// CONDITION ? WHAT_HAPPENS_IF_TRUE : WHAT_HAPPENS_IF_FALSE</span>
+<span class="pl-k">let</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">numericData</span> <span class="pl-c1">&gt;=</span> <span class="pl-c1">10</span><span class="pl-kos">)</span> ? <span class="pl-s">"greater than or equal to 10"</span> : <span class="pl-s">"less than 10"</span><span class="pl-kos">;</span>
+<span class="pl-k">let</span> <span class="pl-s1">result2</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">numericData</span> <span class="pl-c1">%</span> <span class="pl-c1">2</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> ? <span class="pl-s">"even"</span> : <span class="pl-s">"odd"</span><span class="pl-kos">;</span></pre>
+</div>
+<h5>For loops</h5>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-c">//this is an example from: <strong> <a class="inline_disabled external" href="https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial" target="_blank" rel="noopener"><span>https://github.com/UBC-InfoVis/2021-436V-tutorials/tree/master/0_Web_Tutorial</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a></strong><br />// (1) Loop through a block of code 5 times (printing the value of i each time to the console)</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">5</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">i</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// (2) Loop through each of the values in an array</span>
+<span class="pl-k">let</span> <span class="pl-s1">arrayWithNames</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">"Jack"</span><span class="pl-kos">,</span> <span class="pl-s">"Anna"</span><span class="pl-kos">,</span> <span class="pl-s">"Mike"</span><span class="pl-kos">,</span> <span class="pl-s">"Susan"</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">arrayWithNames</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">arrayWithNames</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// (3) Loop through the properties of an object</span>
+<span class="pl-k">let</span> <span class="pl-s1">person</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">firstName</span>: <span class="pl-s">"John"</span><span class="pl-kos">,</span> <span class="pl-c1">lastName</span>: <span class="pl-s">"Doe"</span><span class="pl-kos">,</span> <span class="pl-c1">age</span>: <span class="pl-c1">24</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">property</span> <span class="pl-k">in</span> <span class="pl-s1">person</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">property</span> <span class="pl-c1">+</span> <span class="pl-s">": "</span> <span class="pl-c1">+</span> <span class="pl-s1">person</span><span class="pl-kos">[</span><span class="pl-s1">property</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// (4) The holy grail of JS loops: </span>
+<span class="pl-c">// Making use of object oriented JS, the forEach loop is an array method </span>
+<span class="pl-c">// that iterates over all elements in the array. The index of the element </span>
+<span class="pl-c">// and the element itself are available inside the loop via an anonymous</span>
+<span class="pl-c">// callback function.</span>
+<span class="pl-s1">arrayWithNames</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span> <span class="pl-kos">(</span><span class="pl-s1">element</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+	<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-s">": "</span> <span class="pl-c1">+</span> <span class="pl-s1">element</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;<br /></span></pre>
+</div>
+<p>&nbsp;</p>
+<h4><strong>Template literals</strong></h4>
+<p>You can concatenate strings and variables conveniently in Javascript using Template literals.</p>
+<p>Here are some examples:&nbsp;&nbsp;</p>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-k">const</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-c1">39</span><span class="pl-kos">;</span> 
+<span class="pl-k">const</span> <span class="pl-s1">message</span> <span class="pl-c1">=</span> <span class="pl-s">`The expected max. temperature today is <span class="pl-s1"><span class="pl-kos">${</span>temp<span class="pl-kos">}</span></span>&deg;C`</span><span class="pl-kos">;<br /><br /></span></pre>
+</div>
+<p>Template literals are specified using back-ticks (`), which distinguishes them from regular strings that are specified using single or double quotes.&nbsp; You can use a ${expression} inside the literal.&nbsp; You can do math in the expression, or call a function.&nbsp;&nbsp;</p>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-c">// Function returns a dynamic variable that is embedded using template literals </span>
+<span class="pl-k">const</span> <span class="pl-s1">message</span> <span class="pl-c1">=</span> <span class="pl-s">`Current temperature: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">toCelsius</span><span class="pl-kos">(</span><span class="pl-c1">34</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>&deg;C`</span><span class="pl-kos">;</span></pre>
+</div>
+<p>Template literals are a concise way to manipulate strings, and they can also span multiple lines.&nbsp;</p>
+<h4><strong>Functions- basics</strong></h4>
+<p>There are lots of ways to make function calls in javascript- here are some basic ones.&nbsp; We will go over more ways in the next tutorial, and how Javascript can be used in a functional programming paradigm.&nbsp; But, at first, you can use functions in ways that are similar to other languages.&nbsp;</p>
+<div class="highlight highlight-source-js position-relative overflow-auto">
+    <pre><span class="pl-c">// Call a function</span>
+<span class="pl-en">toCelsius</span><span class="pl-kos">(</span><span class="pl-c1">34</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// Define the f</span><span class="pl-c">unction (with input parameter and return value)</span>
+<span class="pl-k">function</span> <span class="pl-en">toCelsius</span><span class="pl-kos">(</span><span class="pl-s1">fahrenheit</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	<span class="pl-k">return</span> <span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-c1">/</span><span class="pl-c1">9</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-kos">(</span><span class="pl-s1">fahrenheit</span><span class="pl-c1">-</span><span class="pl-c1">32</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// Here's another function call- if you are like me, you will use this a lot to debug your code</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Write something to the web console"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre>
+</div>
+<p>Looks familiar, yes?</p>
+<p>Ok, now here some odd examples which have everything to do with how Javascript does not check variable types:</p>
+<pre>//from here: <a href="https://www.dataviscourse.net/tutorials/lectures/lecture-javascript/" target="_blank" rel="noopener">https://www.dataviscourse.net/tutorials/lectures/lecture-javascript/</a><br />function numberFunction(myNumber) {
+    if (myNumber &lt; 10) {
+        return myNumber;
+    } else {
+        return myNumber * myNumber;
+    }
+}
+
+// this is how you should use this function
+console.log("Function for 30: " + numberFunction(30));
+console.log("Function for -5: " + numberFunction(-5));
+
+// But, as usual, JavaScript lets you do strange things that are convenient sometimes, and confusing at other times:
+console.log("Function for string that can be converted to a number (50):", numberFunction("50"));
+
+console.log("Function for string that cannot be converted to a number (JavaScript still tries!):", numberFunction("what?"));
+
+console.log("Function with more parameters (Javascript will just ignore the extra ones):", numberFunction(30, "IGNORE ME!!!!!! "));
+
+console.log("Function with no parameters (oh, you meant undefined!)", numberFunction());<br /><br /></pre>
+<h4><strong>Accessing and modifying the DOM:</strong></h4>
+<p>With Javascript you can access elements in the DOM- elements you have created using html, or elements you added in other places in your javascript code.&nbsp; You can add new elements, you can access and modify attributes, including style settings.</p>
+<p>You can access elements by their id:</p>
+<pre>let element = document.getElementById("intro");</pre>
+<p>You can access a list of elements by tag name, such as accessing all paragraph tags:</p>
+<pre><span class="jskeywordcolor">let</span><span>&nbsp;element = document.</span><span class="jspropertycolor">getElementsByTagName</span><span>(</span><span class="jsstringcolor">"p"</span><span>);</span></pre>
+<p><span>You can access a list of elements by class name:</span></p>
+<pre><span>const x = document.getElementsByClassName("intro");</span></pre>
+<p>Once you have these elements, you can update them</p>
+<p><a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_getelementbyid" target="_blank" rel="noopener">https://www.w3schools.com/js/tryit.asp?filename=tryjs_dom_getelementbyid</a></p>
+<pre>&lt;!DOCTYPE html&gt;<br />&lt;html&gt;<br />&lt;body&gt;<br /><br />&lt;h2&gt;JavaScript HTML DOM&lt;/h2&gt;<br /><br />&lt;p id="intro"&gt;Finding HTML Elements by Id&lt;/p&gt;<br />&lt;p&gt;This example demonstrates the &lt;b&gt;getElementsById&lt;/b&gt; method.&lt;/p&gt;<br /><br />&lt;p id="demo"&gt;&lt;/p&gt;<br /><br />&lt;script&gt;<br />const element = document.getElementById("intro");<br /><br />document.getElementById("demo").innerHTML =&nbsp;<br />"The text from the intro paragraph is: " + element.innerHTML;<br /><br />&lt;/script&gt;<br /><br />&lt;/body&gt;<br />&lt;/html&gt;</pre>
+<p>You can access child elements, here's a nice example</p>
+<p><a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_childnodes_length" target="_blank" rel="noopener">https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_childnodes_length</a></p>
+<h4><strong>Listeners:</strong></h4>
+<p>With Javascript, you can add listeners to your page elements, to detect events.&nbsp; You can create functions that will be called when these events happen.</p>
+<pre>&lt;!DOCTYPE html&gt;<br />&lt;html&gt;<br />&lt;body&gt;<br /><br />&lt;h2&gt;JavaScript addEventListener()&lt;/h2&gt;<br /><br />&lt;p&gt;This example uses the addEventListener() method to attach a click event to a button.&lt;/p&gt;<br /><br />&lt;button id="myBtn"&gt;Try it&lt;/button&gt;<br /><br />&lt;p id="demo"&gt;&lt;/p&gt;<br /><br />&lt;script&gt;<br />document.getElementById("myBtn").addEventListener("click", displayDate);<br /><br />function displayDate() {<br />&nbsp; document.getElementById("demo").innerHTML = Date();<br />}<br />&lt;/script&gt;<br /><br />&lt;/body&gt;<br />&lt;/html&gt;&nbsp;</pre>
+<p>&nbsp;</p>
+<h3><strong>Want to learn more?&nbsp;</strong></h3>
+<p>First of all- there are a lot of excellent (and free) resources out there for learning Javascript, and you should take advantage of them.&nbsp;&nbsp;</p>
+<p>I would highly recommend this tutorial: <a class="external youtubed" href="https://www.youtube.com/watch?v=rUnmw9fQEwg&amp;t=2s" target="_blank" rel="noopener"><span>https://www.youtube.com/watch?v=rUnmw9fQEwg&amp;t=2s</span><span class="screenreader-only">&nbsp;(Links to an external site.)</span></a><a class="youtubed fOyUs_bGBk fbyHH_bGBk fbyHH_vIby" href="https://www.youtube.com/watch?v=rUnmw9fQEwg&amp;t=2s"><img class="media_comment_thumbnail" src="https://uc.instructure.com/images/play_overlay.png" alt="" /></a></p>
+<p>You can follow along, testing out the code examples as the tutorial plays, within your browser using developer tools.&nbsp; Here's how.&nbsp;</p>
+<p>1.Use the Chrome browser</p>
+<p>2. Open the 'developer tools'</p>
+<p><img src="https://uc.instructure.com/courses/1526754/files/152188959/preview" alt="Screen Shot 2022-01-20 at 1.01.14 PM.png" data-api-endpoint="https://uc.instructure.com/api/v1/courses/1526754/files/152188959" data-api-returntype="File" data-id="152188959" /></p>
+<p>3. Look in the console within your developer tools (see tabs on the top and find 'Console').&nbsp; There may be errors or warnings or messages generated by the page you are on, but you enter Javascript code into the console yourself, and see the output.&nbsp; In the picture below, you can find where I wrote a message to print to the console using the function console.log(), and see how it printed the output.&nbsp; You can paste multiple lines of code, and it will also run.&nbsp; &nbsp;</p>
+<p><img src="https://uc.instructure.com/courses/1526754/files/152188965/preview" alt="Screen Shot 2022-01-20 at 1.02.48 PM.png" data-api-endpoint="https://uc.instructure.com/api/v1/courses/1526754/files/152188965" data-api-returntype="File" data-id="152188965" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

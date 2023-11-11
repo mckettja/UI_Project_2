@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 
 export const HomePage = () => {
-  const { modules } = useLoaderData();
+  const modules = useLoaderData();
   const containerRef = useRef(null);
   const [isMouseOver, setIsMouseOver] = useState(false);
 

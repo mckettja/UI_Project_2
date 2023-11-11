@@ -18,9 +18,9 @@ export const NavBar = ({ courseList }) => {
         {courseList.map((course) => (
           <li key={course.courseId} className="border-2 border-rose-400 p-0">
             <AnimalIcon
-              imageUrl={course.courseAnimal}
-              text={course.courseId}
-              link= {course.courseId}
+              imageUrl={course.imageUrls}
+              text={course.title}
+              link= {course.id}
             />
           </li>
         ))}
