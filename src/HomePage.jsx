@@ -16,7 +16,7 @@ export const HomePage = () => {
 
   const handleWheel = (event) => {
     if (containerRef.current && isMouseOver) {
-      containerRef.current.scrollLeft += event.deltaY;
+      containerRef.current.scrollTop += event.deltaY; 
       event.preventDefault();
     }
   };
@@ -24,7 +24,12 @@ export const HomePage = () => {
   return (
     <div
       ref={containerRef}
-      style={{ display: "flex", overflowX: "auto", maxWidth: "1000px" }}
+      style={{
+        display: "flex",
+        flexDirection: "column", 
+        overflow: "auto",
+        maxWidth: "1000px",
+      }}
       onWheel={handleWheel}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -32,7 +37,7 @@ export const HomePage = () => {
       {modules.map((module, index) => (
         <div
           key={index}
-          style={{ flex: "0 0 auto", minWidth: "300px", marginRight: "20px" }}
+          style={{ flex: "0 0 auto", minWidth: "300px", marginBottom: "20px" }} // Adjust marginRight to marginBottom
         >
           <details
             open
@@ -42,7 +47,7 @@ export const HomePage = () => {
               marginBottom: "10px",
             }}
           >
-            <summary style={{ cursor: "pointer", fontWeight: "bold" }}>{module.title}</summary>
+            <summary style={{ color: "blcak", cursor: "pointer", fontWeight: "bold" }}>Module {index + 1} - {module.title}</summary>
             <ul>
               {module.items.map((moduleItem) => (
                 <li key={moduleItem.slug}>

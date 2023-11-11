@@ -87,6 +87,7 @@ export const getCourseModules = async (courseId) => {
   const modulesData = moduleItems.map((module) => {
     return {
       module: module.name,
+      title: module.title,
       /**@type {Array<AssignmentItem | SyllabusItem | PageItem | PresentationItem>}*/
       items: courseData.items.filter(
         (i) => i.type !== "module" && i.module === module.name,
