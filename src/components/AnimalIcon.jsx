@@ -2,10 +2,11 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../GlobalContent'; // Import the useGlobalContext hook
 
 const AnimalIcon = ({ imageUrl, text, link}) => {
+  const { treatNum, updateTreatNum } = useGlobalContext();
   const [moodIndex, setMoodIndex] = useState(20);
-  const [treatNum, setTreatNum] = useState(200);
 
   const textStyle = {
     textAlign: 'center',
@@ -40,7 +41,7 @@ const AnimalIcon = ({ imageUrl, text, link}) => {
         const newMoodIndex = Math.min(moodIndex + 5, 100);
         const newTreatNum = Math.max(treatNum - 5, 0);
         setMoodIndex(newMoodIndex);
-        setTreatNum(newTreatNum);
+        updateTreatNum(newTreatNum);
       } else {
         alert("Your pet is already full!");
       }

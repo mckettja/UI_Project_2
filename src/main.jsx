@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { GlobalProvider } from "./GlobalContent";
 import { AssignmentListPage } from "./AssignmentListPage";
 import { Zoom } from "./Zoom";
 import { Syllabus } from "./Syllabus";
@@ -10,13 +11,17 @@ import { AssignmentPage } from "./AssignmentPage";
 import { CourseLayout } from "./CourseLayout";
 import "./global.css";
 import { HomePage } from "./HomePage";
-import { getAllCourses, getCourseAssignments, getCourseData, getCourseModules, getPageContent } from "./mock-database/mock-database";
+import { getAllCourses, getCourseAssignments, getCourseModules, getPageContent } from "./mock-database/mock-database";
 import { Shell } from "./Shell";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Shell />,
+    element: (
+      <GlobalProvider> {/* Wrap your main component with the GlobalProvider */}
+        <Shell />
+      </GlobalProvider>
+    ),
     loader: () => getAllCourses(),
     children: [
       {
