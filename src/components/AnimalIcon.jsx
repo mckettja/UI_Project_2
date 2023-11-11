@@ -6,7 +6,7 @@ import { useGlobalContext } from '../GlobalContent'; // Import the useGlobalCont
 
 const AnimalIcon = ({ imageUrl, text, link}) => {
   const { treatNum, updateTreatNum } = useGlobalContext();
-  const [moodIndex, setMoodIndex] = useState(20);
+  const { moodIndex, updateMoodIndex} = useGlobalContext();
 
   const textStyle = {
     textAlign: 'center',
@@ -40,7 +40,7 @@ const AnimalIcon = ({ imageUrl, text, link}) => {
       if (moodIndex !== 100) {
         const newMoodIndex = Math.min(moodIndex + 5, 100);
         const newTreatNum = Math.max(treatNum - 5, 0);
-        setMoodIndex(newMoodIndex);
+        updateMoodIndex(newMoodIndex);
         updateTreatNum(newTreatNum);
       } else {
         alert("Your pet is already full!");
