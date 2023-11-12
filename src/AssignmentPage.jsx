@@ -31,7 +31,7 @@ export const AssignmentPage = () => {
 			<div dangerouslySetInnerHTML={{ __html: htmlContent }} className="page w-auto"></div>
 			<form onSubmit={handleFormSubmit}>
 				<button
-					type="button" // Use type="button" to prevent the default form submission
+					type="submit" // Use type="button" to prevent the default form submission
 					className="rounded-md border-0 bg-red-200 px-4 py-2"
 				>
 					Submit

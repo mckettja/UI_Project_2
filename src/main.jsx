@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GlobalProvider } from "./GlobalContent";
-import "./global.css";
+import "./global.scss";
 import { Announcements } from "./Announcements";
 import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage";
 import { AssignmentPage, loader as assignmentLoader } from "./AssignmentPage";
