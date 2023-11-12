@@ -1,5 +1,4 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../GlobalContent'; // Import the useGlobalContext hook

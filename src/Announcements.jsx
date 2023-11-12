@@ -25,18 +25,13 @@ export const Announcements = () => {
   return (
     <div
       ref={containerRef}
-      style={{
-        display: "flex",
-        flexDirection: "column", 
-        overflow: "auto",
-        maxWidth: "1000px",
-      }}
       onWheel={handleWheel}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      className="flex flex-col gap-4 w-full"
     >
       {modules.map((module, index) => (
-        <Card key={index} style={{ width: '60rem', marginBottom: '20px' }}>
+        <Card key={index} className="flex-1">
           <Card.Body>
             <Card.Title>{`Module ${index + 1} - ${module.title}`}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Subtitle</Card.Subtitle>

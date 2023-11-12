@@ -6,13 +6,14 @@
  * @property {string} pet - Pet of the course
  * @property {string[]} imageUrls
  * @property {string} code - Class code
- * @property {Array<ModuleItem | AssignmentItem | SyllabusItem | PresentationItem>} items
+ * @property {Array<ModuleItem | AssignmentItem | SyllabusItem | PresentationItem | PageItem>} items
  */
 
 /**
  * @typedef {Object} ModuleItem
  * @property {string} name - File name of the item
  * @property {string} folder - folder location
+ * @property {string} title - Title of the module
  * @property {'module'} type
  * @property {string} module - the module this assignment belongs to
  */
@@ -41,7 +42,7 @@
  * @property {string} name - File name of the item
  * @property {string} folder - folder location
  * @property {string} title - Title of the page
- * @property {inclass' | 'tutorial'} type
+ * @property {'inclass' | 'tutorial'} type
  * @property {string} module - name of the ModuleItem this assignment belongs to
  */
 
@@ -82,15 +83,13 @@ export const getCourseData = async (courseId) => {
  */
 export const getCourseModules = async (courseId) => {
   const courseData = await getCourseData(courseId);
-  /**@type {ModuleItem[]}*/
-  const moduleItems = courseData.items.filter((i) => i.type === "module");
+  const moduleItems = courseData.items.filter(/** @returns {i is ModuleItem} */ (i) => i.type === "module");
   const modulesData = moduleItems.map((module) => {
     return {
-      module: module.name,
-      title: module.title,
-      /**@type {Array<AssignmentItem | SyllabusItem | PageItem | PresentationItem>}*/
+      ...module,
       items: courseData.items.filter(
-        (i) => i.type !== "module" && i.module === module.name,
+        /** @returns {i is PageItem | AssignmentItem | PresentationItem} */
+        (i) => i.type !== "module" && i.type !== 'syllabus' && i.module === module.name,
       ),
     };
   });
@@ -102,8 +101,7 @@ export const getCourseModules = async (courseId) => {
  */
 export const getCourseSyllabus = async (courseId) => {
   const courseData = await getCourseData(courseId);
-  /** @type {SyllabusItem | undefined} */
-  const syllabusItem = courseData.items.find((i) => i.type === "syllabus");
+  const syllabusItem = courseData.items.find(/** @returns {i is SyllabusItem} */ (i) => i.type === "syllabus");
   return syllabusItem ?? null
 };
 
@@ -112,8 +110,8 @@ export const getCourseSyllabus = async (courseId) => {
  */
 export const getCourseAssignments = async (courseId) => {
   const courseData = await getCourseData(courseId);
-  /** @type {AssignmentItem[]} */
   const assignmentItems = courseData.items.filter(
+    /** @returns {i is AssignmentItem} */
     (i) => i.type === "assignment",
   );
   return assignmentItems;
@@ -122,7 +120,6 @@ export const getCourseAssignments = async (courseId) => {
 /**
  * @param  {string} courseId
  * @param  {string} itemName
- * @param  {'assignment' | 'syllabus' | 'inclass' | 'tutorial'} type
  * 
  */
 export const getPageContent = async (courseId, itemName) => {

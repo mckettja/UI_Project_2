@@ -1,18 +1,20 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GlobalProvider } from "./GlobalContent";
-import { AssignmentListPage } from "./AssignmentListPage";
-import { Zoom } from "./Zoom";
-import { Syllabus } from "./Syllabus";
-import { Grades } from "./Grades";
-import { Announcements } from "./Announcements";
-import { AssignmentPage } from "./AssignmentPage";
-import { CourseLayout } from "./CourseLayout";
 import "./global.css";
-import { HomePage } from "./HomePage";
-import { getAllCourses, getCourseAssignments, getCourseModules, getPageContent } from "./mock-database/mock-database";
+import { Announcements } from "./Announcements";
+import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage";
+import { AssignmentPage, loader as assignmentLoader } from "./AssignmentPage";
+import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout";
+import "./global.scss";
+import { Grades } from "./Grades";
+import { HomePage, loader as homePageLoader } from "./HomePage";
+import { getAllCourses, getCourseModules, getPageContent } from "./mock-database/mock-database";
 import { Shell } from "./Shell";
+import { Syllabus } from "./Syllabus";
+import { Zoom } from "./Zoom";
 
 const router = createBrowserRouter([
   {
@@ -31,43 +33,40 @@ const router = createBrowserRouter([
       },
       {
         path: "/:courseId",
-        loader: ({ params }) => getCourseAssignments(params.courseId),
+        loader: courseLayoutLoader,
         element: <CourseLayout />,
         children: [
           {
             path: "/:courseId",
             index: true,
-            loader: ({ params }) => getCourseModules(params.courseId),
+            loader: homePageLoader,
             element: <HomePage />
           },
           {
             path: "/:courseId/assignments",
-            loader: ({ params }) => getCourseAssignments(params.courseId),
+            loader: assignmentListLoader,
             element: <AssignmentListPage />
           },
           {
-            path: "/:courseId/Announcements",
+            path: "/:courseId/announcements",
             loader: ({ params }) => getCourseModules(params.courseId),
             element: <Announcements />
           },
           {
             path: "/:courseId/zoom",
-            loader: ({ params }) => getCourseModules(params.courseId),
             element: <Zoom />
           },
           {
             path: "/:courseId/grades",
-            loader: ({ params }) => getCourseModules(params.courseId),
             element: <Grades />
           },
           {
             path: "/:courseId/syllabus",
-            loader: ({ params }) => getCourseModules(params.courseId),
             element: <Syllabus />
           },
           {
             path: "/:courseId/assignments/:assignmentName",
-            loader: ({ params }) => getPageContent(params.courseId, params.assignmentName),
+            loader: assignmentLoader,
             element: <AssignmentPage />
           },
           
