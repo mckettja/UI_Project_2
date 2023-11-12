@@ -1,41 +1,37 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { getCourseAssignments } from "./mock-database/mock-database";
+
+/**
+ * @satisfies {import("react-router-dom").LoaderFunction}
+ */
+export const loader = ({params}) => {
+  if (!params.courseId) {
+    return /**@type {import("./mock-database/mock-database").AssignmentItem[]} */ ([])
+  }
+  return getCourseAssignments(params.courseId)
+}
 
 export const Grades = () => {
-  const modules = useLoaderData();
-  const containerRef = useRef(null);
-  const [isMouseOver, setIsMouseOver] = useState(false);
+  const assignments = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData())
 
-  const handleMouseEnter = () => {
-    setIsMouseOver(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsMouseOver(false);
-  };
-
-  const handleWheel = (event) => {
-    if (containerRef.current && isMouseOver) {
-      containerRef.current.scrollTop += event.deltaY; 
-      event.preventDefault();
-    }
-  };
+  if (assignments.length === 0) {
+    return <div>No assignments</div>
+  }
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        display: "flex",
-        flexDirection: "column", 
-        overflow: "auto",
-        maxWidth: "1000px",
-      }}
-      onWheel={handleWheel}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {"this is the grades page"}
-    </div>
+      <ListGroup>
+        {assignments
+          .sort((a, b) => (a.end_or_due > b.end_or_due ? 1 : a.title <= b.title ? -1 : 0))
+          .map((assignment) => (
+            <ListGroup.Item key={assignment.name}>
+              <Link to={`${assignment.name}`} className="text-xl font-bold">{assignment.title}</Link>
+              <p className="float-right">Grade: {Math.floor(Math.random() * (assignment.points + 1))} / {assignment.points}</p>
+              <p>Due at: {assignment.end_or_due}</p>
+              
+            </ListGroup.Item>
+          ))}
+      </ListGroup>
   );
 };

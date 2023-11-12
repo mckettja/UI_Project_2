@@ -58,6 +58,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/:courseId/grades",
+            loader: assignmentListLoader,
             element: <Grades />
           },
           {
