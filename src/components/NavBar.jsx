@@ -1,10 +1,11 @@
 import AnimalIcon from './AnimalIcon';
 import Button from 'react-bootstrap/Button';
 import { useGlobalContext } from '../GlobalContent';
+import { useMyStoreState } from '../store';
 
 export const NavBar = ({ courseList }) => {
-  const { moodIndex, updateMoodIndex } = useGlobalContext();
-  const { treatNum, updateTreatNum } = useGlobalContext();
+  const { moodIndex, updateMoodIndex, treatNum, updateTreatNum } = useGlobalContext();
+  const user = useMyStoreState(state => state.user)
 
   const handleNextDayClick = () => {
     let newMoodIndex = moodIndex;
@@ -25,10 +26,14 @@ export const NavBar = ({ courseList }) => {
   
 
   return (
-    <nav className="h-full flex flex-1 justify-center border-2 border-purple-500">
+    <nav className="h-full flex flex-1 justify-center border-2 border-purple-500 relative px-12">
+      <div className='absolute top-0 left-0 p-[inherit]'>
+        <p >{user.name}</p>
+        <p>Week: 8</p>
+      </div>
       <ul className="flex gap-3 items-start">
         {courseList.map((course) => (
-          <li key={course.courseId} className="border-2 border-rose-400 p-0">
+          <li key={course.id} className="border-2 border-rose-400 p-0">
             <AnimalIcon
               imageUrl={course.imageUrls}
               text={course.title}

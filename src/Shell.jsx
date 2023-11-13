@@ -4,11 +4,9 @@ import { NavBar } from "./components/NavBar";
 export function Shell() {
   const allCourses = useLoaderData()
 
-  console.log("HERERE", allCourses)
-
   return (
     <>
-      <header className="border-2 border-red-300 flex justify-between items-center px-8">
+      <header className="flex justify-between items-center px-8">
         <Link to="/">Profile</Link>
         <NavBar courseList={allCourses} />
       </header>

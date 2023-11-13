@@ -30,7 +30,7 @@
       "reference": "na"
     },
     {
-      "name": "01-01-intro.pptx",
+      "name": "01-01-intro",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -42,7 +42,7 @@
       "reference": "na"
     },
     {
-      "name": "01-02-usability.pptx",
+      "name": "01-02-usability",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -54,7 +54,7 @@
       "reference": "na"
     },
     {
-      "name": "01-03-norman-principals-discoverability.pptx",
+      "name": "01-03-norman-principals-discoverability",
       "folder": "presentations",
       "type": "lecture",
       "grading": "partitipation",
@@ -90,7 +90,7 @@
       "reference": "na"
     },
     {
-      "name": "01-04-the-user-p1.pptx",
+      "name": "01-04-the-user-p1",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -102,7 +102,7 @@
       "reference": "na"
     },
     {
-      "name": "01-05-the-user-p2.pptx",
+      "name": "01-05-the-user-p2",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -114,7 +114,7 @@
       "reference": "na"
     },
     {
-      "name": "01-06-the-user-p3.pptx",
+      "name": "01-06-the-user-p3",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -150,7 +150,7 @@
       "reference": "na"
     },
     {
-      "name": "03-01-sketching-p1.pptx",
+      "name": "03-01-sketching-p1",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -198,7 +198,7 @@
       "reference": "na"
     },
     {
-      "name": "03-02-sketching-p2.pptx",
+      "name": "03-02-sketching-p2",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -258,7 +258,7 @@
       "reference": ""
     },
     {
-      "name": "04-01-web-p1.pptx",
+      "name": "04-01-web-p1",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -306,7 +306,7 @@
       "reference": ""
     },
     {
-      "name": "04-02-html-css.pptx",
+      "name": "04-02-html-css",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -342,7 +342,7 @@
       "reference": ""
     },
     {
-      "name": "04-03-css.pptx",
+      "name": "04-03-css",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -390,7 +390,7 @@
       "reference": ""
     },
     {
-      "name": "05-01-javascript-p1.pptx",
+      "name": "05-01-javascript-p1",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -438,7 +438,7 @@
       "reference": ""
     },
     {
-      "name": "05-02-javascript-p2.pptx",
+      "name": "05-02-javascript-p2",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -474,7 +474,7 @@
       "reference": ""
     },
     {
-      "name": "05-03-javascript-p3.pptx",
+      "name": "05-03-javascript-p3",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -534,7 +534,7 @@
       "reference": ""
     },
     {
-      "name": "06-01-design-principles-p1.pptx",
+      "name": "06-01-design-principles-p1",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -558,7 +558,7 @@
       "reference": ""
     },
     {
-      "name": "06-02-design-principles-p2.pptx",
+      "name": "06-02-design-principles-p2",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -582,7 +582,7 @@
       "reference": ""
     },
     {
-      "name": "06-03-design-principles-color.pptx",
+      "name": "06-03-design-principles-color",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -618,7 +618,7 @@
       "reference": ""
     },
     {
-      "name": "07-02-people.pptx",
+      "name": "07-02-people",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -630,7 +630,7 @@
       "reference": ""
     },
     {
-      "name": "07-03-people.pptx",
+      "name": "07-03-people",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -642,7 +642,7 @@
       "reference": ""
     },
     {
-      "name": "08-02-people.pptx",
+      "name": "08-02-people",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
@@ -654,7 +654,7 @@
       "reference": ""
     },
     {
-      "name": "08-03-people.pptx",
+      "name": "08-03-people",
       "folder": "presentations",
       "type": "lecture",
       "grading": "participation",
