@@ -1,6 +1,6 @@
-import { action, computed, createStore, createTypedHooks } from "easy-peasy";
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { action, computed, createStore, createTypedHooks } from "easy-peasy"
+import dayjs from "dayjs"
+import customParseFormat from "dayjs/plugin/customParseFormat"
 import user1 from "./mock-database/users/user-1.json"
 import user2 from "./mock-database/users/user-2.json"
 
@@ -16,6 +16,8 @@ dayjs.extend(customParseFormat)
 /**
  * @typedef {Object} UserCourseData
  * @property {string} name - Name of course
+ * @property {number} treats
+ * @property {number} mood
  * @property {AssignmentSubmission[]} assignmentSubmissions
  */
 
@@ -39,38 +41,54 @@ dayjs.extend(customParseFormat)
 
 /**
  * @typedef {Object} StoreModel
- * @property {UserData} user
+ * @property {UserData[]} users
+ * @property {number} userIndex - Index of current users in the `users` list
+ * @property {import('easy-peasy').Computed<StoreModel, UserData>} user
  * @property {import('easy-peasy').Action<StoreModel, {courseId: string, assignment: AssignmentItem, content: string[]}>} submitAssignment
  * @property {import('easy-peasy').Action<StoreModel>} switchUser
+ * @property {import('easy-peasy').Action<StoreModel, {courseId: string, changeFunction: (t: number) => number}>} changeTreat
+ * @property {import('easy-peasy').Action<StoreModel, {courseId: string, changeFunction: (t: number) => number}>} changeMood
  */
 
 /**
  * @type {ReturnType<typeof createStore<StoreModel>>}
  */
 export const store = createStore({
-  user: user1,
-  switchUser: action((state) => {
-    state.user = state.user.id === '1' ? user2 : user1
-  }),
-  submitAssignment: action((state, payload) => {
-    state.user.courseData[payload.courseId].assignmentSubmissions.push({
-      content: payload.content,
-      name: payload.assignment.name,
-      grade: undefined,
-      points: payload.assignment.points,
-      submitDate: dayjs().format('M/D/YYYY'),
-      gradeDate: undefined,
-      isLate: dayjs() > dayjs(payload.assignment.end_or_due, 'M/D/YY'),
-      isNewUpdate: false,
-      title: payload.assignment.title,
-      dueDate: payload.assignment.end_or_due
-    });
-  }),
-});
+	users: [user1, user2],
+	userIndex: 0,
+	switchUser: action((state) => {
+		state.userIndex = (state.userIndex + 1) % 2
+	}),
+	user: computed((state) => state.users[state.userIndex]),
+	submitAssignment: action((state, payload) => {
+		state.users[state.userIndex].courseData[payload.courseId].assignmentSubmissions.push({
+			content: payload.content,
+			name: payload.assignment.name,
+			grade: undefined,
+			points: payload.assignment.points,
+			submitDate: dayjs().format("M/D/YYYY"),
+			gradeDate: undefined,
+			isLate: dayjs() > dayjs(payload.assignment.end_or_due, "M/D/YY"),
+			isNewUpdate: false,
+			title: payload.assignment.title,
+			dueDate: payload.assignment.end_or_due,
+		})
+	}),
+	changeTreat: action((state, payload) => {
+		state.users[state.userIndex].courseData[payload.courseId].treats = payload.changeFunction(
+			state.user.courseData[payload.courseId].treats,
+		)
+	}),
+  changeMood: action((state, payload) => {
+		state.users[state.userIndex].courseData[payload.courseId].mood = payload.changeFunction(
+			state.user.courseData[payload.courseId].mood,
+		)
+	}),
+})
 
 /** @type {ReturnType<typeof createTypedHooks<StoreModel>>} */
 const hook = createTypedHooks()
 
-export const useMyStoreActions = hook.useStoreActions;
-export const useMyStoreDispatch = hook.useStoreDispatch;
-export const useMyStoreState = hook.useStoreState;
+export const useMyStoreActions = hook.useStoreActions
+export const useMyStoreDispatch = hook.useStoreDispatch
+export const useMyStoreState = hook.useStoreState

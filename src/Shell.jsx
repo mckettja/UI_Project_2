@@ -1,6 +1,6 @@
-import { Link, Outlet, useLoaderData } from "react-router-dom"
-import { NavBar } from "./components/NavBar"
 import { Dropdown } from "react-bootstrap"
+import { Outlet, useLoaderData } from "react-router-dom"
+import { NavBar } from "./components/NavBar"  
 import { useMyStoreActions } from "./store"
 
 export function Shell() {
@@ -17,7 +17,7 @@ export function Shell() {
 						</Dropdown.Toggle>
 
 						<Dropdown.Divider />
-						<Dropdown.Menu show>
+						<Dropdown.Menu>
 							<Dropdown.Item onClick={() => switchUser()}>Switch User</Dropdown.Item>
 							<Dropdown.Header>Admin</Dropdown.Header>
 							<Dropdown.Item eventKey="2">Another action</Dropdown.Item>

@@ -4,6 +4,8 @@
   "courseData": {
     "ui": {
       "name": "ui",
+      "treats": 25,
+      "mood": 25,
       "assignmentSubmissions": [
         {
           "name": "assignment_01",
@@ -37,6 +39,8 @@
     },
     "senior-design": {
       "name": "senior-design",
+      "treats": 55,
+      "mood": 75,
       "assignmentSubmissions": [
         {
           "name": "assignment_01",
@@ -56,6 +60,8 @@
     },
     "computer-graphics": {
       "name": "computer-graphics",
+      "treats": 45,
+      "mood": 85,
       "assignmentSubmissions": [
         {
           "name": "assignment_01",
