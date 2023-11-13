@@ -35,7 +35,11 @@ export const Zoom = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {"this is the zoom page"}
+      <h1 style={{ fontSize: '1.5em', textDecoration: 'underline' }}><strong>Zoom Page</strong></h1>
+      <br></br>
+      <p>Here is where the link to our zoom meeting will be, click the link below and your page will be rerouted to a new page.</p>
+      <br></br>
+      <a style={{ fontSize: '1.2em', color: 'blue', fontWeight: 'bold', textDecoration: 'underline' }} href="https://ucincinnati.zoom.us/j/92459304063?pwd=RjRXcGI3RE9oS1VvbStkQzlVTWg1dz09&23=#success" target="_blank"><p>Click Here</p></a>
     </div>
   );
 };
