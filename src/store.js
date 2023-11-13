@@ -58,9 +58,9 @@ export const store = createStore({
       name: payload.assignment.name,
       grade: undefined,
       points: payload.assignment.points,
-      submitDate: dayjs().format('MM/DD/YYYY'),
+      submitDate: dayjs().format('M/D/YYYY'),
       gradeDate: undefined,
-      isLate: dayjs().format('YYYY/MM/DD') > dayjs(payload.assignment.end_or_due, 'MM/DD/YY').format('YYYY/MM/DD'),
+      isLate: dayjs() > dayjs(payload.assignment.end_or_due, 'M/D/YY'),
       isNewUpdate: false,
       title: payload.assignment.title,
       dueDate: payload.assignment.end_or_due
