@@ -1,26 +1,37 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GlobalProvider } from "./GlobalContent";
 import "./global.scss";
 import { Announcements } from "./Announcements";
-import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage";
+import {
+  loader as assignmentListLoader,
+  AssignmentListPage,
+} from "./AssignmentListPage";
 import { AssignmentPage, loader as assignmentLoader } from "./AssignmentPage";
 import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout";
 import "./global.scss";
 import { Grades } from "./Grades";
 import { HomePage, loader as homePageLoader } from "./HomePage";
-import { getAllCourses, getCourseModules, getPageContent } from "./mock-database/mock-database";
+import {
+  getAllCourses,
+  getCourseModules,
+  getPageContent,
+} from "./mock-database/mock-database";
 import { Shell } from "./Shell";
 import { Syllabus } from "./Syllabus";
 import { Zoom } from "./Zoom";
+import { store } from "./store";
+import { StoreProvider } from "easy-peasy";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <GlobalProvider> {/* Wrap your main component with the GlobalProvider */}
+      <GlobalProvider>
+        {" "}
+        {/* Wrap your main component with the GlobalProvider */}
         <Shell />
       </GlobalProvider>
     ),
@@ -29,7 +40,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         index: true,
-        element: <div className="text-center p-8">Please select a course on the navbar to get started</div>
+        element: (
+          <div className="text-center p-8">
+            Please select a course on the navbar to get started
+          </div>
+        ),
       },
       {
         path: "/:courseId",
@@ -40,49 +55,54 @@ const router = createBrowserRouter([
             path: "/:courseId",
             index: true,
             loader: homePageLoader,
-            element: <HomePage />
+            element: <HomePage />,
           },
           {
             path: "/:courseId/assignments",
             loader: assignmentListLoader,
-            element: <AssignmentListPage />
+            element: <AssignmentListPage />,
           },
           {
             path: "/:courseId/announcements",
             loader: ({ params }) => getCourseModules(params.courseId),
-            element: <Announcements />
+            element: <Announcements />,
           },
           {
             path: "/:courseId/zoom",
-            element: <Zoom />
+            element: <Zoom />,
           },
           {
             path: "/:courseId/grades",
-            element: <Grades />
+            loader: assignmentListLoader,
+            element: <Grades />,
           },
           {
             path: "/:courseId/syllabus",
-            element: <Syllabus />
+            element: <Syllabus />,
           },
           {
             path: "/:courseId/assignments/:assignmentName",
             loader: assignmentLoader,
-            element: <AssignmentPage />
+            element: <AssignmentPage />,
           },
-          
+
           {
             path: "/:courseId/pages/:pageName",
-            loader: ({ params }) => getPageContent(params.courseId, params.pageName),
-            element: <div>This is a page from module</div>
-          }
-        ]
-      }
-    ]
-  }
+            loader: ({ params }) =>
+              getPageContent(params.courseId, params.pageName),
+            element: <div>This is a page from module</div>,
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
+// @ts-ignore
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <StoreProvider store={store}>
+      <RouterProvider router={router} />
+    </StoreProvider>
+  </React.StrictMode>,
 );

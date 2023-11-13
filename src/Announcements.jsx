@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import { useLoaderData, Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import { useLoaderData } from "react-router-dom";
 
 export const Announcements = () => {
   const modules = useLoaderData();
@@ -17,7 +17,7 @@ export const Announcements = () => {
 
   const handleWheel = (event) => {
     if (containerRef.current && isMouseOver) {
-      containerRef.current.scrollTop += event.deltaY; 
+      containerRef.current.scrollTop += event.deltaY;
       event.preventDefault();
     }
   };
