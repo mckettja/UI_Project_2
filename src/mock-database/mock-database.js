@@ -55,80 +55,81 @@
  * @property {string} module - name of the ModuleItem this assignment belongs to
  */
 
-
 export const getAllCourses = async () => {
-  const courseIds = ['ui']
-  return Promise.all(courseIds.map(async id => {
-    const data = await getCourseData(id)
-    return {
-      id: data.id,
-      imageUrls: data.imageUrls,
-      code: data.code,
-      title: data.title
-    }
-  }))
-}
+	const courseIds = ["ui"];
+	return Promise.all(
+		courseIds.map(async (id) => {
+			const data = await getCourseData(id);
+			return {
+				id: data.id,
+				imageUrls: data.imageUrls,
+				code: data.code,
+				title: data.title,
+			};
+		}),
+	);
+};
 
 /**
  * @param  {string} courseId
  */
 export const getCourseData = async (courseId) => {
-  /**@type {Course} */
-  const data = (await import(`./course-data/${courseId}/${courseId}.json`)).default;
-  return data;
+	/**@type {Course} */
+	const data = (await import(`./course-data/${courseId}/${courseId}.json`)).default;
+	return data;
 };
 
 /**
  * @param  {string} courseId
  */
 export const getCourseModules = async (courseId) => {
-  const courseData = await getCourseData(courseId);
-  const moduleItems = courseData.items.filter(/** @returns {i is ModuleItem} */ (i) => i.type === "module");
-  const modulesData = moduleItems.map((module) => {
-    return {
-      ...module,
-      items: courseData.items.filter(
-        /** @returns {i is PageItem | AssignmentItem | PresentationItem} */
-        (i) => i.type !== "module" && i.type !== 'syllabus' && i.module === module.name,
-      ),
-    };
-  });
-  return modulesData;
+	const courseData = await getCourseData(courseId);
+	const moduleItems = courseData.items.filter(/** @returns {i is ModuleItem} */ (i) => i.type === "module");
+	const modulesData = moduleItems.map((module) => {
+		return {
+			...module,
+			items: courseData.items.filter(
+				/** @returns {i is PageItem | AssignmentItem | PresentationItem} */
+				(i) => i.type !== "module" && i.type !== "syllabus" && i.module === module.name,
+			),
+		};
+	});
+	return modulesData;
 };
 
 /**
  * @param  {string} courseId
  */
 export const getCourseSyllabus = async (courseId) => {
-  const courseData = await getCourseData(courseId);
-  const syllabusItem = courseData.items.find(/** @returns {i is SyllabusItem} */ (i) => i.type === "syllabus");
-  return syllabusItem ?? null
+	const courseData = await getCourseData(courseId);
+	const syllabusItem = courseData.items.find(/** @returns {i is SyllabusItem} */ (i) => i.type === "syllabus");
+	return syllabusItem ?? null;
 };
 
 /**
  * @param  {string} courseId
  */
 export const getCourseAssignments = async (courseId) => {
-  const courseData = await getCourseData(courseId);
-  const assignmentItems = courseData.items.filter(
-    /** @returns {i is AssignmentItem} */
-    (i) => i.type === "assignment",
-  );
-  return assignmentItems;
+	const courseData = await getCourseData(courseId);
+	const assignmentItems = courseData.items.filter(
+		/** @returns {i is AssignmentItem} */
+		(i) => i.type === "assignment",
+	);
+	return assignmentItems;
 };
 
 /**
  * @param  {string} courseId
  * @param  {string} itemName
- * 
+ *
  */
 export const getPageContent = async (courseId, itemName) => {
-  const courseData = await getCourseData(courseId);
-  const item = courseData.items.find(i => i.name === itemName)
-  if (!item) {
-    return ""
-  }
-  /** @type string */
-  const textContent = (await import(`./course-data/${courseId}/${item.folder}/${item.name}.html?raw`)).default
-  return textContent
-}
+	const courseData = await getCourseData(courseId);
+	const item = courseData.items.find((i) => i.name === itemName);
+	if (!item) {
+		return "";
+	}
+	/** @type string */
+	const textContent = (await import(`./course-data/${courseId}/${item.folder}/${item.name}.html?raw`)).default;
+	return { item: item, content: textContent };
+};
