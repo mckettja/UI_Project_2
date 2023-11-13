@@ -1,0 +1,77 @@
+{
+  "id": "2",
+  "name": "John Cena",
+  "courseData": {
+    "ui": {
+      "name": "ui",
+      "assignmentSubmissions": [
+        {
+          "name": "assignment_01",
+          "submitDate": "08/20/2022",
+          "gradeDate": "09/01/2022",
+          "isLate": false,
+          "points": 10,
+          "grade": 10,
+          "isNewUpdate": false,
+          "content": [
+            "John Cena Submission"
+          ],
+          "title": "Getting to know you",
+          "dueDate": "08/29/2022"
+        },
+        {
+          "name": "assignment_02",
+          "submitDate": "09/05/2022",
+          "gradeDate": "09/20/2022",
+          "isLate": true,
+          "points": 10,
+          "grade": 5,
+          "isNewUpdate": true,
+          "content": [
+            "John Cena Submission Assignment 2"
+          ],
+          "title": "Sketching practice",
+          "dueDate": "09/16/2022"
+        }
+      ]
+    },
+    "senior-design": {
+      "name": "senior-design",
+      "assignmentSubmissions": [
+        {
+          "name": "assignment_01",
+          "submitDate": "08/30/2022",
+          "gradeDate": "09/01/2022",
+          "isLate": true,
+          "points": 9,
+          "grade": 10,
+          "isNewUpdate": true,
+          "content": [
+            "Yale Submission"
+          ],
+          "title": "First Assignment",
+          "dueDate": "08/29/2022"
+        }
+      ]
+    },
+    "computer-graphics": {
+      "name": "computer-graphics",
+      "assignmentSubmissions": [
+        {
+          "name": "assignment_01",
+          "submitDate": "08/30/2022",
+          "gradeDate": "09/01/2022",
+          "isLate": true,
+          "points": 10,
+          "grade": 9,
+          "isNewUpdate": true,
+          "content": [
+            "Yale Submission"
+          ],
+          "title": "first assignment",
+          "dueDate": "08/29/2022"
+        }
+      ]
+    }
+  }
+}

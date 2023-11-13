@@ -56,7 +56,7 @@
  */
 
 export const getAllCourses = async () => {
-	const courseIds = ["ui"];
+	const courseIds = ["ui", "senior-design", "computer-graphics"];
 	return Promise.all(
 		courseIds.map(async (id) => {
 			const data = await getCourseData(id);

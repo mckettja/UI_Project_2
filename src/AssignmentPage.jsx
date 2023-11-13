@@ -1,63 +1,63 @@
-import React, { useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
-import { useGlobalContext } from "./GlobalContent";
-import { getPageContent } from "./mock-database/mock-database";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Form from "react-bootstrap/Form";
+import React, { useState } from "react"
+import { useLoaderData, useParams } from "react-router-dom"
+import { useGlobalContext } from "./GlobalContent"
+import { getPageContent } from "./mock-database/mock-database"
+import Button from "react-bootstrap/Button"
+import Modal from "react-bootstrap/Modal"
+import Tab from "react-bootstrap/Tab"
+import Tabs from "react-bootstrap/Tabs"
+import Form from "react-bootstrap/Form"
 
-import { useMyStoreActions, useMyStoreState } from "./store";
+import { useMyStoreActions, useMyStoreState } from "./store"
 
 /** @satisfies {import("react-router-dom").LoaderFunction} */
 export const loader = ({ params }) => {
 	if (!params.courseId || !params.assignmentName) {
-		return null;
+		return null
 	}
 
-	return getPageContent(params.courseId, params.assignmentName);
-};
+	return getPageContent(params.courseId, params.assignmentName)
+}
 
 export const AssignmentPage = () => {
-	const data = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData());
-	const submitAssignment = useMyStoreActions((actions) => actions.submitAssignment);
-	const user = useMyStoreState((state) => state.user);
-	const { treatNum, updateTreatNum } = useGlobalContext();
-	const [showModal, setShowModal] = useState(false);
-	const [activeTab, setActiveTab] = useState("upload");
-	const [textSubmission, setTextSubmission] = useState("");
-	const { courseId } = useParams();
+	const data = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData())
+	const submitAssignment = useMyStoreActions((actions) => actions.submitAssignment)
+	const user = useMyStoreState((state) => state.user)
+	const { treatNum, updateTreatNum } = useGlobalContext()
+	const [showModal, setShowModal] = useState(false)
+	const [activeTab, setActiveTab] = useState("upload")
+	const [textSubmission, setTextSubmission] = useState("")
+	const { courseId } = useParams()
 
 	if (!data || !courseId) {
-		return null;
+		return null
 	}
 
-	const isAssignmentSubmitted = user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(data.item.name);
+	const isAssignmentSubmitted = user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(data.item.name)
 
 	/**
 	 *
 	 * @param {React.FormEvent<HTMLFormElement>} event
 	 */
 	const handleFormSubmit = (event) => {
-		event.preventDefault(); // Prevent the button from reloading the page
-		setShowModal(true); // Show the modal on form submission
-	};
+		event.preventDefault() // Prevent the button from reloading the page
+		setShowModal(true) // Show the modal on form submission
+	}
 
 	const handleCloseModal = () => {
-		setShowModal(false);
-	};
+		setShowModal(false)
+	}
 
 	const handleSubmitAssignment = () => {
-		const newTreatNum = treatNum + 5;
+		const newTreatNum = treatNum + 5
 		submitAssignment({
 			assignment: /** @type {import("./store").AssignmentItem} */ (data.item),
 			content: [textSubmission],
-			courseId: courseId
-		});
-		updateTreatNum(newTreatNum);
-		setShowModal(false);
-	};
+			courseId: courseId,
+		})
+		updateTreatNum(newTreatNum)
+		setShowModal(false)
+	}
 
 	return (
 		<div>
@@ -72,7 +72,12 @@ export const AssignmentPage = () => {
 						</Modal.Header>
 
 						<Modal.Body>
-							<Tabs defaultActiveKey={activeTab} id="assignment-tabs" onSelect={(key) => setActiveTab(key)} className="mb-3">
+							<Tabs
+								defaultActiveKey={activeTab}
+								id="assignment-tabs"
+								onSelect={(key) => setActiveTab(key || "text")}
+								className="mb-3"
+							>
 								<Tab eventKey="upload" title="Upload">
 									<p>Uploading Documents will be added at a future date</p>
 								</Tab>
@@ -110,17 +115,5 @@ export const AssignmentPage = () => {
 			)}
 			<div dangerouslySetInnerHTML={{ __html: data.content }} className="page w-auto"></div>
 		</div>
-	);
-};
-
-// TextControlsExample component
-function TextControlsExample() {
-	return (
-		<Form>
-			<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-				<Form.Label>Text Submission</Form.Label>
-				<Form.Control as="textarea" rows={3} />
-			</Form.Group>
-		</Form>
-	);
+	)
 }
