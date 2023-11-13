@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { NavLink, Outlet, useLoaderData, useParams } from "react-router-dom";
 import { RightSidebar } from "./components/RightSidebar";
 import { getCourseAssignments } from "./mock-database/mock-database";
 import { useMyStoreState } from "./store";
@@ -14,13 +14,16 @@ export const loader = ({ params }) => {
 
 export const CourseLayout = () => {
 	const assignments = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData());
-	const user = useMyStoreState(state => state.user)
+	const user = useMyStoreState((state) => state.user);
+	const { courseId } = useParams();
 
-	if (assignments === null) {
+	if (assignments === null || typeof courseId !== "string") {
 		return "Something wrong with the CourseLayout page";
 	}
 
-	const unsubmittedAssignments = assignments.filter(a => !user.assignmentSubmissions.map(s => s.name).includes(a.name))
+	const unsubmittedAssignments = assignments.filter(
+		(a) => !user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
+	);
 
 	return (
 		<main className="grid grid-cols-[15%_1fr_auto] gap-12 px-8">

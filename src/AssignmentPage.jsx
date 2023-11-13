@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useGlobalContext } from "./GlobalContent";
 import { getPageContent } from "./mock-database/mock-database";
 import Button from "react-bootstrap/Button";
@@ -27,12 +27,13 @@ export const AssignmentPage = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [activeTab, setActiveTab] = useState("upload");
 	const [textSubmission, setTextSubmission] = useState("");
+	const { courseId } = useParams();
 
-	if (!data) {
+	if (!data || !courseId) {
 		return null;
 	}
 
-	const isAssignmentSubmitted = user.assignmentSubmissions.map((s) => s.name).includes(data.item.name);
+	const isAssignmentSubmitted = user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(data.item.name);
 
 	/**
 	 *
@@ -49,7 +50,11 @@ export const AssignmentPage = () => {
 
 	const handleSubmitAssignment = () => {
 		const newTreatNum = treatNum + 5;
-		submitAssignment({ assignment: /** @type {import("./store").AssignmentItem} */ (data.item), content: [textSubmission] });
+		submitAssignment({
+			assignment: /** @type {import("./store").AssignmentItem} */ (data.item),
+			content: [textSubmission],
+			courseId: courseId
+		});
 		updateTreatNum(newTreatNum);
 		setShowModal(false);
 	};
@@ -75,7 +80,12 @@ export const AssignmentPage = () => {
 									<Form>
 										<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
 											<Form.Label>Text Submission</Form.Label>
-											<Form.Control as="textarea" rows={3} value={textSubmission} onChange={(e) => setTextSubmission(e.target.value)} />
+											<Form.Control
+												as="textarea"
+												rows={3}
+												value={textSubmission}
+												onChange={(e) => setTextSubmission(e.target.value)}
+											/>
 										</Form.Group>
 									</Form>
 								</Tab>

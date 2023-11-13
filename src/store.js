@@ -8,6 +8,12 @@ dayjs.extend(customParseFormat)
  * @typedef {Object} UserData
  * @property {string} id - id of student
  * @property {string} name - Name of student, i.e. Jane Doe
+ * @property {Record<string, UserCourseData>} courseData - grades, assignments, etc. info about each course user has
+ */
+
+/**
+ * @typedef {Object} UserCourseData
+ * @property {string} name - Name of course
  * @property {AssignmentSubmission[]} assignmentSubmissions
  */
 
@@ -30,62 +36,72 @@ const users = [
   {
     id: "1",
     name: "Yale Miller",
-    assignmentSubmissions: [
-      {
-        name: "assignment_01",
-        submitDate: "08/29/2022",
-        gradeDate: "09/01/2022",
-        isLate: false,
-        points: 10,
-        grade: 10,
-        isNewUpdate: false,
-        content: ["Yale Submission"],
-        title: "Getting to know you",
-        dueDate: '08/29/2022'
-      },
-      {
-        name: "assignment_02",
-        submitDate: "09/17/2022",
-        gradeDate: "09/20/2022",
-        isLate: true,
-        points: 10,
-        grade: 5,
-        isNewUpdate: true,
-        content: ["Yale Submission Assignment 2"],
-        title: "Sketching practice",
-        dueDate: "09/16/2022"
-      },
-    ],
+    courseData: {
+      "ui": {
+        name: "ui",
+        assignmentSubmissions: [
+          {
+            name: "assignment_01",
+            submitDate: "08/29/2022",
+            gradeDate: "09/01/2022",
+            isLate: false,
+            points: 10,
+            grade: 10,
+            isNewUpdate: false,
+            content: ["Yale Submission"],
+            title: "Getting to know you",
+            dueDate: '08/29/2022'
+          },
+          {
+            name: "assignment_02",
+            submitDate: "09/17/2022",
+            gradeDate: "09/20/2022",
+            isLate: true,
+            points: 10,
+            grade: 5,
+            isNewUpdate: true,
+            content: ["Yale Submission Assignment 2"],
+            title: "Sketching practice",
+            dueDate: "09/16/2022"
+          },
+        ],
+      }
+    }
   },
   {
     id: "2",
     name: "John Cena",
-    assignmentSubmissions: [
-      {
-        name: "assignment_01",
-        submitDate: "08/20/2022",
-        gradeDate: "09/01/2022",
-        isLate: false,
-        points: 10,
-        grade: 10,
-        isNewUpdate: false,
-        content: ["John Cena Submission"],
-        title: "Getting to know you",
-        dueDate: '08/29/2022'
-      },
-      {
-        name: "assignment_02",
-        submitDate: "09/05/2022",
-        gradeDate: "09/20/2022",
-        isLate: true,
-        points: 10,
-        grade: 5,
-        isNewUpdate: true,
-        content: ["John Cena Submission Assignment 2"],
-        title: "Sketching practice",
-        dueDate: "09/16/2022"
-      },
-    ],
+    courseData: {
+      "ui": {
+        name: "ui",
+        assignmentSubmissions: [
+          {
+            name: "assignment_01",
+            submitDate: "08/20/2022",
+            gradeDate: "09/01/2022",
+            isLate: false,
+            points: 10,
+            grade: 10,
+            isNewUpdate: false,
+            content: ["John Cena Submission"],
+            title: "Getting to know you",
+            dueDate: '08/29/2022'
+          },
+          {
+            name: "assignment_02",
+            submitDate: "09/05/2022",
+            gradeDate: "09/20/2022",
+            isLate: true,
+            points: 10,
+            grade: 5,
+            isNewUpdate: true,
+            content: ["John Cena Submission Assignment 2"],
+            title: "Sketching practice",
+            dueDate: "09/16/2022"
+          },
+        ],
+      }
+    }
   },
 ];
 
@@ -96,7 +112,7 @@ const users = [
 /**
  * @typedef {Object} StoreModel
  * @property {UserData} user
- * @property {import('easy-peasy').Action<StoreModel, {assignment: AssignmentItem, content: string[]}>} submitAssignment
+ * @property {import('easy-peasy').Action<StoreModel, {courseId: string, assignment: AssignmentItem, content: string[]}>} submitAssignment
  * @property {import('easy-peasy').Action<StoreModel>} switchUser
  */
 
@@ -111,7 +127,7 @@ export const store = createStore({
     state.user = otherUser
   }),
   submitAssignment: action((state, payload) => {
-    state.user.assignmentSubmissions.push({
+    state.user.courseData[payload.courseId].assignmentSubmissions.push({
       content: payload.content,
       name: payload.assignment.name,
       grade: undefined,

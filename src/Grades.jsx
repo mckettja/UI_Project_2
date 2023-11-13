@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useParams } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 import { getCourseAssignments } from "./mock-database/mock-database";
 import { useMyStoreState } from "./store";
@@ -17,19 +17,26 @@ export const loader = ({ params }) => {
 export const Grades = () => {
 	const assignments = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData());
 	const user = useMyStoreState((state) => state.user);
+	const { courseId } = useParams();
 
-	const unsubmittedAssignments = assignments.filter((a) => !user.assignmentSubmissions.map((s) => s.name).includes(a.name));
+	if (typeof courseId !== "string") {
+		return null;
+	}
 
 	if (assignments.length === 0) {
 		return <div>No assignments</div>;
 	}
 
+	const unsubmittedAssignments = assignments.filter(
+		(a) => !user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
+	);
+
 	return (
 		<>
 			<div>
-				<p className="text-2xl font-bold mb-2">Submited Assignments</p>
+				<p className="mb-2 text-2xl font-bold">Submited Assignments</p>
 				<ListGroup>
-					{user.assignmentSubmissions.map((submission) => (
+					{user.courseData[courseId].assignmentSubmissions.map((submission) => (
 						<ListGroup.Item key={submission.name}>
 							<Link to={`../assignments/${submission.name}`} className="text-xl font-bold">
 								{submission.title}
@@ -44,7 +51,7 @@ export const Grades = () => {
 			</div>
 
 			<div>
-				<p className="text-2xl font-bold mb-2">Unsubmitted Assignments</p>
+				<p className="mb-2 text-2xl font-bold">Unsubmitted Assignments</p>
 				<ListGroup>
 					{unsubmittedAssignments.map((assignment) => (
 						<ListGroup.Item key={assignment.name}>

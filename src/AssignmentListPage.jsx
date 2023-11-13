@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useParams } from "react-router-dom";
 import { getCourseAssignments } from "./mock-database/mock-database";
 import { useMyStoreState } from "./store";
 import { Accordion, ListGroup } from "react-bootstrap";
@@ -18,17 +18,26 @@ export const loader = ({ params }) => {
 export const AssignmentListPage = () => {
 	const assignments = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData());
 	const user = useMyStoreState((state) => state.user);
+	const { courseId } = useParams();
+
+	if (typeof courseId !== "string") {
+		return null;
+	}
 
 	if (assignments.length === 0) {
 		return <div>No assignments</div>;
 	}
 
-	const submittedAssignments = assignments.filter((a) => user.assignmentSubmissions.map((s) => s.name).includes(a.name));
-	const unSubmittedAssignments = assignments.filter((a) => !user.assignmentSubmissions.map((s) => s.name).includes(a.name));
+	const submittedAssignments = assignments.filter((a) =>
+		user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
+	);
+	const unSubmittedAssignments = assignments.filter(
+		(a) => !user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
+	);
 
 	return (
 		<>
-      <Accordion defaultActiveKey={['0']} alwaysOpen>
+			<Accordion defaultActiveKey={["0"]} alwaysOpen>
 				<Accordion.Item eventKey="0">
 					<Accordion.Header>Upcoming assignments</Accordion.Header>
 					<AccordionBody>
@@ -48,7 +57,7 @@ export const AssignmentListPage = () => {
 				</Accordion.Item>
 			</Accordion>
 
-      <Accordion defaultActiveKey={['0']} alwaysOpen>
+			<Accordion defaultActiveKey={["0"]} alwaysOpen>
 				<Accordion.Item eventKey="0">
 					<Accordion.Header>Submitted assignments</Accordion.Header>
 					<AccordionBody>
@@ -70,4 +79,3 @@ export const AssignmentListPage = () => {
 		</>
 	);
 };
-
