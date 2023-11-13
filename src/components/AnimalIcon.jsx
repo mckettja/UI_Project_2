@@ -1,7 +1,7 @@
+import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../GlobalContent'; // Import the useGlobalContext hook
+import { useGlobalContext } from '../GlobalContent';
 
 const AnimalIcon = ({ imageUrl, text, link}) => {
   const { treatNum, updateTreatNum } = useGlobalContext();

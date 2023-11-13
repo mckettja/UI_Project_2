@@ -53,6 +53,25 @@
           "dueDate": "08/29/2022"
         }
       ]
+    },
+    "computer-graphics": {
+      "name": "computer-graphics",
+      "assignmentSubmissions": [
+        {
+          "name": "assignment_01",
+          "submitDate": "08/30/2022",
+          "gradeDate": "09/01/2022",
+          "isLate": true,
+          "points": 10,
+          "grade": 9,
+          "isNewUpdate": true,
+          "content": [
+            "Yale Submission"
+          ],
+          "title": "first assignment",
+          "dueDate": "08/29/2022"
+        }
+      ]
     }
   }
 }
