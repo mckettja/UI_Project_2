@@ -33,7 +33,7 @@ export const NavBar = ({ courseList }) => {
       </div>
       <ul className="flex gap-3 items-start">
         {courseList.map((course) => (
-          <li key={course.courseId} className="border-2 border-rose-400 p-0">
+          <li key={course.id} className="border-2 border-rose-400 p-0">
             <AnimalIcon
               imageUrl={course.imageUrls}
               text={course.title}

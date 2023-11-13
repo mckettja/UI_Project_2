@@ -30,7 +30,7 @@ export const CourseLayout = () => {
 			<nav>
 				<ul className="flex flex-col gap-3 px-0 py-6">
 					{["Modules", "Assignments", "Syllabus", "Grades", "Zoom", "Announcements"].map((tabName) => (
-						<li className="text-black no-underline hover:font-bold hover:underline">
+						<li className="text-black no-underline hover:font-bold hover:underline" key={tabName}>
 							<NavLink
 								end
 								to={`${tabName === "Modules" ? "" : tabName.toLowerCase()}`}

@@ -127,9 +127,24 @@ export const getPageContent = async (courseId, itemName) => {
 	const courseData = await getCourseData(courseId);
 	const item = courseData.items.find((i) => i.name === itemName);
 	if (!item) {
-		return "";
+		return null;
 	}
 	/** @type string */
 	const textContent = (await import(`./course-data/${courseId}/${item.folder}/${item.name}.html?raw`)).default;
 	return { item: item, content: textContent };
+};
+
+/**
+ * @param  {string} courseId
+ * @param  {string} fileName
+ *
+ */
+export const getFile = async (courseId, fileName) => {
+	const courseData = await getCourseData(courseId);
+	const item = courseData.items.find((i) => i.name === fileName);
+	if (!item) {
+		return null;
+	}
+	/** @type string */
+	return { item: item};
 };
