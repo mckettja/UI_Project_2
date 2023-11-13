@@ -1,6 +1,8 @@
 import { action, computed, createStore, createTypedHooks } from "easy-peasy";
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import user1 from "./mock-database/users/user-1.json"
+import user2 from "./mock-database/users/user-2.json"
 
 dayjs.extend(customParseFormat)
 
@@ -31,80 +33,6 @@ dayjs.extend(customParseFormat)
  * @property {string} title - Title of original assignment item
  */
 
-/** @type {UserData[]} */
-const users = [
-  {
-    id: "1",
-    name: "Yale Miller",
-    courseData: {
-      "ui": {
-        name: "ui",
-        assignmentSubmissions: [
-          {
-            name: "assignment_01",
-            submitDate: "08/29/2022",
-            gradeDate: "09/01/2022",
-            isLate: false,
-            points: 10,
-            grade: 10,
-            isNewUpdate: false,
-            content: ["Yale Submission"],
-            title: "Getting to know you",
-            dueDate: '08/29/2022'
-          },
-          {
-            name: "assignment_02",
-            submitDate: "09/17/2022",
-            gradeDate: "09/20/2022",
-            isLate: true,
-            points: 10,
-            grade: 5,
-            isNewUpdate: true,
-            content: ["Yale Submission Assignment 2"],
-            title: "Sketching practice",
-            dueDate: "09/16/2022"
-          },
-        ],
-      }
-    }
-  },
-  {
-    id: "2",
-    name: "John Cena",
-    courseData: {
-      "ui": {
-        name: "ui",
-        assignmentSubmissions: [
-          {
-            name: "assignment_01",
-            submitDate: "08/20/2022",
-            gradeDate: "09/01/2022",
-            isLate: false,
-            points: 10,
-            grade: 10,
-            isNewUpdate: false,
-            content: ["John Cena Submission"],
-            title: "Getting to know you",
-            dueDate: '08/29/2022'
-          },
-          {
-            name: "assignment_02",
-            submitDate: "09/05/2022",
-            gradeDate: "09/20/2022",
-            isLate: true,
-            points: 10,
-            grade: 5,
-            isNewUpdate: true,
-            content: ["John Cena Submission Assignment 2"],
-            title: "Sketching practice",
-            dueDate: "09/16/2022"
-          },
-        ],
-      }
-    }
-  },
-];
-
 /**
  * @typedef {import("./mock-database/mock-database").AssignmentItem} AssignmentItem
  */
@@ -120,11 +48,9 @@ const users = [
  * @type {ReturnType<typeof createStore<StoreModel>>}
  */
 export const store = createStore({
-  user: users[0],
+  user: user1,
   switchUser: action((state) => {
-    const otherUser = users.find(u => u.id !== state.user.id)
-    if (!otherUser) return
-    state.user = otherUser
+    state.user = state.user.id === '1' ? user2 : user1
   }),
   submitAssignment: action((state, payload) => {
     state.user.courseData[payload.courseId].assignmentSubmissions.push({

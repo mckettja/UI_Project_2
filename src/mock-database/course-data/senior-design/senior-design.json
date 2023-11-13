@@ -1,0 +1,262 @@
+{
+  "id": "senior-design",
+  "title": "Senior Design",
+  "code": "cs5001",
+  "pet": "Koala",
+  "imageUrls": ["/images/KoalaSad.png", "/images/KoalaNeutral.png", "/images/KoalaHappy.png"],
+  "items": [
+    {
+      "name": "syllabus",
+      "folder": "course_info",
+      "type": "syllabus",
+      "grading": "participation",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "12/9/2022",
+      "module": "none",
+      "title": "Syllabus",
+      "reference": "na"
+    },
+    {
+      "name": "module1",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "8/22/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Introduction",
+      "reference": "na"
+    },
+    {
+      "name": "01",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Introduction",
+      "reference": "na"
+    },
+    {
+      "name": "module2",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "8/29/2022",
+      "end_or_due": "9/2/2022",
+      "module": "module2",
+      "title": "Forming teams",
+      "reference": "na"
+    },
+    {
+      "name": "02",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Forming teams",
+      "reference": "na"
+    },
+    {
+      "name": "module3",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "9/7/2022",
+      "end_or_due": "9/7/2022",
+      "module": "module3",
+      "title": "Initial project design",
+      "reference": "na"
+    },
+    {
+      "name": "03",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Initial project design",
+      "reference": "na"
+    },
+    {
+      "name": "assignment_01",
+      "folder": "assignments",
+      "type": "assignment",
+      "grading": "assignment",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "8/29/2022",
+      "module": "module1",
+      "title": "First assignment",
+      "reference": "na"
+    },
+    {
+      "name": "module4",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "9/12/2022",
+      "end_or_due": "9/16/2022",
+      "module": "module4",
+      "title": "User profiles",
+      "reference": "na"
+    },
+    {
+      "name": "04",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "User profiles",
+      "reference": "na"
+    },
+    {
+      "name": "assignment_02",
+      "folder": "assignments",
+      "type": "assignment",
+      "grading": "assignment",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "8/29/2022",
+      "module": "module1",
+      "title": "User profiles",
+      "reference": "na"
+    },
+    {
+      "name": "module5",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "9/19/2022",
+      "end_or_due": "9/23/2022",
+      "module": "module5",
+      "title": "Tasks",
+      "reference": "na"
+    },
+    {
+      "name": "05",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Tasks",
+      "reference": "na"
+    },
+    {
+      "name": "assignment_03",
+      "folder": "assignments",
+      "type": "assignment",
+      "grading": "assignment",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "8/29/2022",
+      "module": "module1",
+      "title": "Tasks",
+      "reference": "na"
+    },
+    {
+      "name": "module6",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "9/26/2022",
+      "end_or_due": "9/30/2022",
+      "module": "module6",
+      "title": "Timeline",
+      "reference": "na"
+    },
+    {
+      "name": "06",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Timeline",
+      "reference": "na"
+    },
+    {
+      "name": "assignment_04",
+      "folder": "assignments",
+      "type": "assignment",
+      "grading": "assignment",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "8/29/2022",
+      "module": "module1",
+      "title": "Timeline",
+      "reference": "na"
+    },
+    {
+      "name": "module7",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "10/3/2022",
+      "end_or_due": "10/14/2022",
+      "module": "module7",
+      "title": "Project status update",
+      "reference": "na"
+    },
+    {
+      "name": "07",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Project status update",
+      "reference": "na"
+    },
+    {
+      "name": "assignment_05",
+      "folder": "assignments",
+      "type": "assignment",
+      "grading": "assignment",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "8/29/2022",
+      "module": "module1",
+      "title": "Project status update",
+      "reference": "na"
+    },
+    {
+      "name": "module8",
+      "folder": "na",
+      "type": "module",
+      "grading": "na",
+      "start_or_posted": "10/3/2022",
+      "end_or_due": "10/14/2022",
+      "module": "module7",
+      "title": "Project status update",
+      "reference": "na"
+    },
+    {
+      "name": "08",
+      "folder": "presentations",
+      "type": "lecture",
+      "grading": "partitipation",
+      "start_or_posted": "8/26/2022",
+      "end_or_due": "8/26/2022",
+      "module": "module1",
+      "title": "Project status update",
+      "reference": "na"
+    },
+    {
+      "name": "assignment_06",
+      "folder": "assignments",
+      "type": "assignment",
+      "grading": "assignment",
+      "start_or_posted": "8/15/2022",
+      "end_or_due": "8/29/2022",
+      "module": "module1",
+      "title": "Project status update",
+      "reference": "na"
+    }
+  ]
+}
