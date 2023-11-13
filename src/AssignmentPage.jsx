@@ -1,12 +1,11 @@
 import React, { useState } from "react"
-import { useLoaderData, useParams } from "react-router-dom"
-import { useGlobalContext } from "./GlobalContent"
-import { getPageContent } from "./mock-database/mock-database"
 import Button from "react-bootstrap/Button"
+import Form from "react-bootstrap/Form"
 import Modal from "react-bootstrap/Modal"
 import Tab from "react-bootstrap/Tab"
 import Tabs from "react-bootstrap/Tabs"
-import Form from "react-bootstrap/Form"
+import { useLoaderData, useParams } from "react-router-dom"
+import { getPageContent } from "./mock-database/mock-database"
 
 import { useMyStoreActions, useMyStoreState } from "./store"
 
@@ -23,7 +22,7 @@ export const AssignmentPage = () => {
 	const data = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData())
 	const submitAssignment = useMyStoreActions((actions) => actions.submitAssignment)
 	const user = useMyStoreState((state) => state.user)
-	const { treatNum, updateTreatNum } = useGlobalContext()
+	const changeTreat = useMyStoreActions(actions => actions.changeTreat)
 	const [showModal, setShowModal] = useState(false)
 	const [activeTab, setActiveTab] = useState("upload")
 	const [textSubmission, setTextSubmission] = useState("")
@@ -49,13 +48,12 @@ export const AssignmentPage = () => {
 	}
 
 	const handleSubmitAssignment = () => {
-		const newTreatNum = treatNum + 5
 		submitAssignment({
 			assignment: /** @type {import("./store").AssignmentItem} */ (data.item),
 			content: [textSubmission],
 			courseId: courseId,
 		})
-		updateTreatNum(newTreatNum)
+		changeTreat({courseId: courseId, changeFunction: (t) => Math.min(t + 5, 100)})
 		setShowModal(false)
 	}
 

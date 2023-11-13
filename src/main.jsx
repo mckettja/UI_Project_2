@@ -9,7 +9,6 @@ import { loader as assignmentLoader, AssignmentPage } from "./AssignmentPage"
 import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout"
 import { FilePage, loader as filePageLoader } from "./FilePage"
 import "./global.scss"
-import { GlobalProvider } from "./GlobalContent"
 import { Grades } from "./Grades"
 import { HomePage, loader as homePageLoader } from "./HomePage"
 import { getAllCourses, getCourseModules, getPageContent } from "./mock-database/mock-database"
@@ -21,13 +20,7 @@ import { Zoom } from "./Zoom"
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: (
-			<GlobalProvider>
-				{" "}
-				{/* Wrap your main component with the GlobalProvider */}
-				<Shell />
-			</GlobalProvider>
-		),
+		element: <Shell />,
 		loader: () => getAllCourses(),
 		children: [
 			{

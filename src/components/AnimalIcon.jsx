@@ -1,19 +1,18 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../GlobalContent';
+import { useMyStoreActions, useMyStoreState } from '../store';
 
-const AnimalIcon = ({ imageUrl, text, link}) => {
-  const { treatNum, updateTreatNum } = useGlobalContext();
-  const { moodIndex, updateMoodIndex} = useGlobalContext();
+const AnimalIcon = ({ courseId, imageUrl, text, link}) => {
+  const user = useMyStoreState(state => state.user)
+  const updateTreat = useMyStoreActions(state => state.changeTreat)
+  const updateMood = useMyStoreActions(state => state.changeMood)
+
+  const treatNum = user.courseData[courseId].treats
+  const moodNum = user.courseData[courseId].mood
 
   const textStyle = {
     textAlign: 'center',
-  };
-
-  const containerStyle = {
-    display: 'flex',
-    alignItems: 'center',
   };
 
   const progressBarStyle = {
@@ -21,26 +20,11 @@ const AnimalIcon = ({ imageUrl, text, link}) => {
     transform: 'rotate(-90deg)',
   };
 
-  const paddingStyle = {
-    marginRight: '-30px',
-    marginLeft: '-30px',
-  };
-
-  const imageStyle = {
-    width: '1.5vh',
-    height: 'auto',
-    position: 'relative',
-    zIndex: 1,
-    top: '5vh',
-  };
-
   const handleButtonClick = () => {
     if (treatNum > 0){
-      if (moodIndex !== 100) {
-        const newMoodIndex = Math.min(moodIndex + 5, 100);
-        const newTreatNum = Math.max(treatNum - 5, 0);
-        updateMoodIndex(newMoodIndex);
-        updateTreatNum(newTreatNum);
+      if (moodNum !== 100) {
+        updateMood({courseId, changeFunction: (m) => Math.min(m + 5, 100)}); // Increase mood by 5
+        updateTreat({courseId, changeFunction: (t) => Math.max(t - 5, 0)}) // Decrease treat by 5
       } else {
         alert("Your pet is already full!");
       }
@@ -51,21 +35,21 @@ const AnimalIcon = ({ imageUrl, text, link}) => {
   
   return (
     <div className="animal-icon">
-      <div style={containerStyle}>
+      <div className='flex items-center'>
         <img
-          src={imageUrl[moodIndex >= 75 ? 2 : moodIndex < 50 ? 0 : 1]} //changes what image is rendered depending on moodIndex
+          src={imageUrl[moodNum >= 75 ? 2 : moodNum < 50 ? 0 : 1]} //changes what image is rendered depending on moodIndex
           alt="Animal"
-          style={{ width: '12vh', height: 'auto' }}
+          className='w-[12vh]'
         />
-        <div style={paddingStyle}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className='-mx-8'>
+          <div className='flex flex-col items-center'>
             <ProgressBar
-              variant={moodIndex >= 75 ? 'success' : moodIndex < 50 ? 'danger' : 'warning'} //changes color of progress bar depending on moodIndex
-              now={moodIndex}
+              variant={moodNum >= 75 ? 'success' : moodNum < 50 ? 'danger' : 'warning'} //changes color of progress bar depending on moodIndex
+              now={moodNum}
               style={progressBarStyle}
             />
             <button onClick={handleButtonClick}>
-              <img src={"/images/add.png"} alt="Animal" style={imageStyle} />
+              <img src={"/images/add.png"} alt="Animal" className='w-[1.5vh] aspect-square relative top-[5vh]' />
             </button>
           </div>
         </div>
