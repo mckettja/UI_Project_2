@@ -72,7 +72,7 @@ export const AssignmentListPage = () => {
 					<AccordionBody>
 						<ListGroup>
 							{unSubmittedAssignments.sort(compareAssignments).map((assignment) => (
-								<ListGroup.Item>
+								<ListGroup.Item key={assignment.name}>
 									<Link to={`${assignment.name}`} className="text-xl font-bold">
 										{assignment.title}
 									</Link>
@@ -92,7 +92,7 @@ export const AssignmentListPage = () => {
 							{submittedAssignments
 								.sort(compareAssignments)
 								.map((assignment) => (
-									<ListGroup.Item>
+									<ListGroup.Item key={assignment.name}>
 										<Link to={`${assignment.name}`} className="text-xl font-bold">
 											{assignment.title}
 										</Link>

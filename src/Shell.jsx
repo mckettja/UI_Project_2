@@ -1,16 +1,33 @@
-import { Link, Outlet, useLoaderData } from "react-router-dom";
-import { NavBar } from "./components/NavBar";
+import { Link, Outlet, useLoaderData } from "react-router-dom"
+import { NavBar } from "./components/NavBar"
+import { Dropdown } from "react-bootstrap"
+import { useMyStoreActions } from "./store"
 
 export function Shell() {
-  const allCourses = useLoaderData()
+	const allCourses = useLoaderData()
+	const switchUser = useMyStoreActions((actions) => actions.switchUser)
 
-  return (
-    <>
-      <header className="flex justify-between items-center px-8">
-        <Link to="/">Profile</Link>
-        <NavBar courseList={allCourses} />
-      </header>
-      <Outlet />
-    </>
-  );
+	return (
+		<>
+			<header className="flex items-center justify-between px-8">
+				<div>
+					<Dropdown>
+						<Dropdown.Toggle variant="success" id="dropdown-basic" className="text-black">
+							Profile
+						</Dropdown.Toggle>
+
+						<Dropdown.Divider />
+						<Dropdown.Menu show>
+							<Dropdown.Item onClick={() => switchUser()}>Switch User</Dropdown.Item>
+							<Dropdown.Header>Admin</Dropdown.Header>
+							<Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+							<Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+						</Dropdown.Menu>
+					</Dropdown>
+				</div>
+				<NavBar courseList={allCourses} />
+			</header>
+			<Outlet />
+		</>
+	)
 }

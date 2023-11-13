@@ -18,20 +18,6 @@
           ],
           "title": "Getting to know you",
           "dueDate": "08/29/2022"
-        },
-        {
-          "name": "assignment_02",
-          "submitDate": "09/05/2022",
-          "gradeDate": "09/20/2022",
-          "isLate": true,
-          "points": 10,
-          "grade": 5,
-          "isNewUpdate": true,
-          "content": [
-            "John Cena Submission Assignment 2"
-          ],
-          "title": "Sketching practice",
-          "dueDate": "09/16/2022"
         }
       ]
     },
@@ -47,7 +33,7 @@
           "grade": 10,
           "isNewUpdate": true,
           "content": [
-            "Yale Submission"
+            "John Cena Submission"
           ],
           "title": "First Assignment",
           "dueDate": "08/29/2022"
