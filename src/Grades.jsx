@@ -31,7 +31,7 @@ export const Grades = () => {
 				<ListGroup>
 					{user.assignmentSubmissions.map((submission) => (
 						<ListGroup.Item key={submission.name}>
-							<Link to={`${submission.name}`} className="text-xl font-bold">
+							<Link to={`../assignments/${submission.name}`} className="text-xl font-bold">
 								{submission.title}
 							</Link>
 							<p className="float-right">

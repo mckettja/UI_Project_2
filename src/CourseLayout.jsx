@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { RightSidebar } from "./components/RightSidebar";
 import { getCourseAssignments } from "./mock-database/mock-database";
+import { useMyStoreState } from "./store";
 
 /**
  * @satisfies {import('react-router-dom').LoaderFunction}
@@ -13,10 +14,13 @@ export const loader = ({ params }) => {
 
 export const CourseLayout = () => {
 	const assignments = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData());
+	const user = useMyStoreState(state => state.user)
 
 	if (assignments === null) {
 		return "Something wrong with the CourseLayout page";
 	}
+
+	const unsubmittedAssignments = assignments.filter(a => !user.assignmentSubmissions.map(s => s.name).includes(a.name))
 
 	return (
 		<main className="grid grid-cols-[15%_1fr_auto] gap-12 px-8">
@@ -38,7 +42,7 @@ export const CourseLayout = () => {
 			<div className="flex max-w-3xl flex-col gap-6 py-6">
 				<Outlet />
 			</div>
-			<RightSidebar assignmentList={assignments} />
+			<RightSidebar assignmentList={unsubmittedAssignments} />
 		</main>
 	);
 };
