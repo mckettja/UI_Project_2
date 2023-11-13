@@ -103,7 +103,14 @@ export const getCourseModules = async (courseId) => {
 export const getCourseSyllabus = async (courseId) => {
 	const courseData = await getCourseData(courseId);
 	const syllabusItem = courseData.items.find(/** @returns {i is SyllabusItem} */ (i) => i.type === "syllabus");
-	return syllabusItem ?? null;
+
+	if (!syllabusItem) {
+		return null
+	}
+
+	/** @type string */
+	const textContent = (await import(`./course-data/${courseId}/${syllabusItem.folder}/${syllabusItem.name}.html?raw`)).default;
+	return { item: syllabusItem, content: textContent };
 };
 
 /**
@@ -146,5 +153,5 @@ export const getFile = async (courseId, fileName) => {
 		return null;
 	}
 	/** @type string */
-	return { item: item};
+	return { item: item };
 };

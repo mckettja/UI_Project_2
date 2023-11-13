@@ -1,23 +1,22 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { GlobalProvider } from "./GlobalContent";
-import "./global.scss";
-import { Announcements } from "./Announcements";
-import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage";
-import { AssignmentPage, loader as assignmentLoader } from "./AssignmentPage";
-import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout";
-import "./global.scss";
-import { Grades } from "./Grades";
-import { HomePage, loader as homePageLoader } from "./HomePage";
-import { getAllCourses, getCourseModules, getPageContent } from "./mock-database/mock-database";
-import { Shell } from "./Shell";
-import { Syllabus } from "./Syllabus";
-import { Zoom } from "./Zoom";
-import { store } from "./store";
-import { StoreProvider } from "easy-peasy";
-import { FilePage, loader as filePageLoader } from "./FilePage";
+import "bootstrap/dist/css/bootstrap.min.css"
+import { StoreProvider } from "easy-peasy"
+import React from "react"
+import ReactDOM from "react-dom/client"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { Announcements } from "./Announcements"
+import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage"
+import { loader as assignmentLoader, AssignmentPage } from "./AssignmentPage"
+import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout"
+import { FilePage, loader as filePageLoader } from "./FilePage"
+import "./global.scss"
+import { GlobalProvider } from "./GlobalContent"
+import { Grades } from "./Grades"
+import { HomePage, loader as homePageLoader } from "./HomePage"
+import { getAllCourses, getCourseModules, getPageContent } from "./mock-database/mock-database"
+import { Shell } from "./Shell"
+import { store } from "./store"
+import { Syllabus, loader as syllabusPageLoader } from "./Syllabus"
+import { Zoom } from "./Zoom"
 
 const router = createBrowserRouter([
 	{
@@ -68,6 +67,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "/:courseId/syllabus",
+						loader: syllabusPageLoader,
 						element: <Syllabus />,
 					},
 					{
@@ -83,13 +83,13 @@ const router = createBrowserRouter([
 					{
 						path: "/:courseId/files/:fileName",
 						loader: filePageLoader,
-						element: <FilePage />
+						element: <FilePage />,
 					},
 				],
 			},
 		],
 	},
-]);
+])
 
 // @ts-ignore
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -98,4 +98,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<RouterProvider router={router} />
 		</StoreProvider>
 	</React.StrictMode>,
-);
+)
