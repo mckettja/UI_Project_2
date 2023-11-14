@@ -55,12 +55,9 @@ export const AssignmentListPage = () => {
 
 	console.log("AS", assignments)
 
-	const submittedAssignments = user.courseData[courseId].assignmentSubmissions.map((s) => ({
-		name: s.name,
-		title: s.title,
-		end_or_due: s.dueDate,
-		grade: s.grade,
-	}))
+	const submittedAssignments = assignments.filter(
+		(a) => user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
+	)
 
 	const unSubmittedAssignments = assignments.filter(
 		(a) => !user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
@@ -79,10 +76,7 @@ export const AssignmentListPage = () => {
 						<ListGroup>
 							{upcomingAssignments.sort(compareAssignments).map((assignment) => (
 								<ListGroup.Item key={assignment.name}>
-									<Link to={`${assignment.name}`} className="text-xl font-bold">
-										{assignment.title}
-									</Link>
-									<p>Due at: {assignment.end_or_due}</p>
+									<AssignmentListItem assignment={assignment} />
 								</ListGroup.Item>
 							))}
 						</ListGroup>
@@ -97,13 +91,7 @@ export const AssignmentListPage = () => {
 						<ListGroup>
 							{overDueAssignments.sort(compareAssignments).map((assignment) => (
 								<ListGroup.Item key={assignment.name}>
-									<Link to={`${assignment.name}`} className="relative text-xl font-bold">
-										{assignment.title}
-									</Link>
-									<p className="absolute right-3 top-2 rounded-2xl border-2 border-blue-700 px-2 py-1 text-xs text-blue-700">
-										Overdue
-									</p>
-									<p>Due at: {assignment.end_or_due}</p>
+									<AssignmentListItem assignment={assignment} />
 								</ListGroup.Item>
 							))}
 						</ListGroup>
@@ -118,19 +106,33 @@ export const AssignmentListPage = () => {
 						<ListGroup>
 							{submittedAssignments.sort(compareAssignments).map((assignment) => (
 								<ListGroup.Item key={assignment.name}>
-									<Link to={`${assignment.name}`} className="relative text-xl font-bold">
-										{assignment.title}
-									</Link>
-									<p className="absolute right-3 top-2 rounded-2xl border-2 border-orange-600 px-2 py-1 text-xs text-orange-600">
-										Graded
-									</p>
-									<p>Due at: {assignment.end_or_due}</p>
+									<AssignmentListItem assignment={assignment} />
 								</ListGroup.Item>
 							))}
 						</ListGroup>
 					</AccordionBody>
 				</Accordion.Item>
 			</Accordion>
+		</>
+	)
+}
+
+/**
+ * @typedef {Object} AssignmentListItemProps
+ * @property {import("./mock-database/mock-database").AssignmentItem} assignment
+ */
+
+/**
+ * @param {AssignmentListItemProps} props
+ */
+const AssignmentListItem = ({ assignment }) => {
+	return (
+		<>
+			<Link to={`${assignment.name}`} className="relative text-xl font-bold">
+				{assignment.type === "exams" ? "🎓" : "✏️"} {assignment.title}
+			</Link>
+			<p className="absolute right-3 top-2 rounded-2xl border-2 border-orange-600 px-2 py-1 text-xs text-orange-600">Graded</p>
+			<p>Due at: {assignment.end_or_due}</p>
 		</>
 	)
 }

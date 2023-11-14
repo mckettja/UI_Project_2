@@ -23,8 +23,8 @@
  * @property {string} name - File name of the item
  * @property {string} title - Title of the assignment
  * @property {string} folder - folder location
- * @property {'assignment' | 'project'} type
- * @property {string} end_or_due - date string, e.g. 09/09/2023
+ * @property {'assignment' | 'project' | 'exams'} type
+ * @property {string} end_or_due - date string, e.g. 9/9/2022
  * @property {number} points - Points of the assignment
  * @property {string} module - name of the ModuleItem this assignment belongs to
  */
@@ -120,7 +120,7 @@ export const getCourseAssignments = async (courseId) => {
 	const courseData = await getCourseData(courseId);
 	const assignmentItems = courseData.items.filter(
 		/** @returns {i is AssignmentItem} */
-		(i) => i.type === "assignment" || i.type === "project",
+		(i) => i.type === "assignment" || i.type === "project" || i.type === "exams",
 	);
 	return assignmentItems;
 };
