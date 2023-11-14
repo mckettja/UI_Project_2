@@ -8,14 +8,9 @@ import dayjs from "dayjs"
 import customParseFormat from "dayjs/plugin/customParseFormat"
 dayjs.extend(customParseFormat)
 
-/**
- *
- * @param {import("./mock-database/mock-database").AssignmentItem} a
- * @param {import("./mock-database/mock-database").AssignmentItem} b
- */
 function compareAssignments(a, b) {
-	const dateA = dayjs(a.end_or_due, "M/D/YYYY");
-  const dateB = dayjs(b.end_or_due, "M/D/YYYY");
+	const dateA = dayjs(a.end_or_due, "M/D/YYYY")
+	const dateB = dayjs(b.end_or_due, "M/D/YYYY")
 
 	// Compare by date first
 	if (dateA < dateB) {
@@ -47,6 +42,7 @@ export const loader = ({ params }) => {
 export const AssignmentListPage = () => {
 	const assignments = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData())
 	const user = useMyStoreState((state) => state.user)
+	const currentDate = useMyStoreState((state) => state.currentDate)
 	const { courseId } = useParams()
 
 	if (typeof courseId !== "string") {
@@ -57,21 +53,29 @@ export const AssignmentListPage = () => {
 		return <div>No assignments</div>
 	}
 
-	const submittedAssignments = assignments.filter((a) =>
-		user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
-	)
+	const submittedAssignments = user.courseData[courseId].assignmentSubmissions.map((s) => ({
+		name: s.name,
+		title: s.title,
+		end_or_due: s.dueDate,
+		grade: s.grade,
+	}))
+
 	const unSubmittedAssignments = assignments.filter(
 		(a) => !user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
 	)
 
+	const upcomingAssignments = unSubmittedAssignments.filter((a) => dayjs(a.end_or_due, "M/D/YYYY") >= currentDate)
+
+	const overDueAssignments = unSubmittedAssignments.filter((a) => dayjs(a.end_or_due, "M/D/YYYY") < currentDate)
+
 	return (
 		<>
-			<Accordion defaultActiveKey={["0"]} alwaysOpen>
+			<Accordion defaultActiveKey={["0"]}>
 				<Accordion.Item eventKey="0">
 					<Accordion.Header>Upcoming assignments</Accordion.Header>
 					<AccordionBody>
 						<ListGroup>
-							{unSubmittedAssignments.sort(compareAssignments).map((assignment) => (
+							{upcomingAssignments.sort(compareAssignments).map((assignment) => (
 								<ListGroup.Item key={assignment.name}>
 									<Link to={`${assignment.name}`} className="text-xl font-bold">
 										{assignment.title}
@@ -86,19 +90,41 @@ export const AssignmentListPage = () => {
 
 			<Accordion defaultActiveKey={["0"]} alwaysOpen>
 				<Accordion.Item eventKey="0">
+					<Accordion.Header>Overdue assignments</Accordion.Header>
+					<AccordionBody>
+						<ListGroup>
+							{overDueAssignments.sort(compareAssignments).map((assignment) => (
+								<ListGroup.Item key={assignment.name}>
+									<Link to={`${assignment.name}`} className="relative text-xl font-bold">
+										{assignment.title}
+									</Link>
+									<p className="absolute right-3 top-2 rounded-2xl border-2 border-blue-700 px-2 py-1 text-xs text-blue-700">
+										Overdue
+									</p>
+									<p>Due at: {assignment.end_or_due}</p>
+								</ListGroup.Item>
+							))}
+						</ListGroup>
+					</AccordionBody>
+				</Accordion.Item>
+			</Accordion>
+
+			<Accordion defaultActiveKey={["0"]}>
+				<Accordion.Item eventKey="0">
 					<Accordion.Header>Submitted assignments</Accordion.Header>
 					<AccordionBody>
 						<ListGroup>
-							{submittedAssignments
-								.sort(compareAssignments)
-								.map((assignment) => (
-									<ListGroup.Item key={assignment.name}>
-										<Link to={`${assignment.name}`} className="text-xl font-bold">
-											{assignment.title}
-										</Link>
-										<p>Due at: {assignment.end_or_due}</p>
-									</ListGroup.Item>
-								))}
+							{submittedAssignments.sort(compareAssignments).map((assignment) => (
+								<ListGroup.Item key={assignment.name}>
+									<Link to={`${assignment.name}`} className="relative text-xl font-bold">
+										{assignment.title}
+									</Link>
+									<p className="absolute right-3 top-2 rounded-2xl border-2 border-orange-600 px-2 py-1 text-xs text-orange-600">
+										Graded
+									</p>
+									<p>Due at: {assignment.end_or_due}</p>
+								</ListGroup.Item>
+							))}
 						</ListGroup>
 					</AccordionBody>
 				</Accordion.Item>

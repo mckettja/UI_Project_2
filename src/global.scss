@@ -12,6 +12,34 @@
 	flex: 1;
 }
 
+// Fancy title for use in CourseLayout.jsx page
+// Credit: https://codepen.io/t_afif/pen/VwXOmjW
+.fancy {
+  --b: 4px;   /* control the border thickness */
+  --w: 25vw;  /* control the width of the line*/
+  --g: 15px;  /* control the gap */
+  --c: hsl(211, 100%, 38%);
+ 
+  width: fit-content;
+  padding: 0 1em;
+  line-height: 1.6em;
+  border: 1px solid;
+  color: #fff;
+  background: 
+    conic-gradient(from   45deg at left , var(--c) 25%,#0000 0) 0,
+    conic-gradient(from -135deg at right, var(--c) 25%,#0000 0) 100%;
+  background-size: 51% 100%;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  border-image: 
+     linear-gradient(
+       #0000      calc(50% - var(--b)/2),
+       var(--c) 0 calc(50% + var(--b)/2),
+       #0000    0) 
+    1/0 var(--w)/calc(var(--w) + var(--g));
+  margin-inline: auto;
+}
+
 /* Page content */
 
 :root {

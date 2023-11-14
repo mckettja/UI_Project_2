@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.css"
 import { StoreProvider } from "easy-peasy"
 import React from "react"
 import ReactDOM from "react-dom/client"
@@ -11,8 +11,8 @@ import { FilePage, loader as filePageLoader } from "./FilePage"
 import "./global.scss"
 import { Grades } from "./Grades"
 import { HomePage, loader as homePageLoader } from "./HomePage"
-import { getAllCourses, getCourseModules, getPageContent } from "./mock-database/mock-database"
-import { Shell } from "./Shell"
+import { getPageContent } from "./mock-database/mock-database"
+import { Shell, loader as shellLoader } from "./Shell"
 import { store } from "./store"
 import { Syllabus, loader as syllabusPageLoader } from "./Syllabus"
 import { Zoom } from "./Zoom"
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Shell />,
-		loader: () => getAllCourses(),
+		loader: shellLoader,
 		children: [
 			{
 				path: "/",

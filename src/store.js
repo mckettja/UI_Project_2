@@ -1,5 +1,5 @@
 import { action, computed, createStore, createTypedHooks } from "easy-peasy"
-import dayjs from "dayjs"
+import dayjs, { Dayjs } from "dayjs"
 import customParseFormat from "dayjs/plugin/customParseFormat"
 import user1 from "./mock-database/users/user-1.json"
 import user2 from "./mock-database/users/user-2.json"
@@ -41,9 +41,11 @@ dayjs.extend(customParseFormat)
 
 /**
  * @typedef {Object} StoreModel
+ * @property {Dayjs} currentDate
  * @property {UserData[]} users
  * @property {number} userIndex - Index of current users in the `users` list
  * @property {import('easy-peasy').Computed<StoreModel, UserData>} user
+ * @property {import('easy-peasy').Action<StoreModel, {changeFunction: (currDate: Dayjs) => Dayjs}>} changeDate
  * @property {import('easy-peasy').Action<StoreModel, {courseId: string, assignment: AssignmentItem, content: string[]}>} submitAssignment
  * @property {import('easy-peasy').Action<StoreModel>} switchUser
  * @property {import('easy-peasy').Action<StoreModel, {courseId: string, changeFunction: (t: number) => number}>} changeTreat
@@ -55,11 +57,15 @@ dayjs.extend(customParseFormat)
  */
 export const store = createStore({
 	users: [user1, user2],
+	currentDate: dayjs("2022-10-13"),
 	userIndex: 0,
 	switchUser: action((state) => {
 		state.userIndex = (state.userIndex + 1) % 2
 	}),
 	user: computed((state) => state.users[state.userIndex]),
+	changeDate: action((state, payload) => {
+		state.currentDate = payload.changeFunction(state.currentDate)
+	}),
 	submitAssignment: action((state, payload) => {
 		state.users[state.userIndex].courseData[payload.courseId].assignmentSubmissions.push({
 			content: payload.content,
@@ -79,7 +85,7 @@ export const store = createStore({
 			state.user.courseData[payload.courseId].treats,
 		)
 	}),
-  changeMood: action((state, payload) => {
+	changeMood: action((state, payload) => {
 		state.users[state.userIndex].courseData[payload.courseId].mood = payload.changeFunction(
 			state.user.courseData[payload.courseId].mood,
 		)
