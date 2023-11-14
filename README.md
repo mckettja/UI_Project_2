@@ -2,7 +2,7 @@
 
 This project was created by Yale Miller, Josh McKettrick, and Bao Huynh.
 
-## Project Descripion
+## Project Summary and Descripion
 We were required to implement a new, improvized Canvas application. Canvas is the current application that the University of Cincinnati uses to post class assignments, grades, and related class materials. Many students have complaints with our current Canvas system, so we were tasked to take our critisims and implement them in a reimagined system. We also were tasked to make Canvas more fun and interactive by adding a game-like feature to it. Below are some guidelines to how our application was designed.
 - Users should be able to select their own profile.
 - Users should be enrolled in three courses with fully implemented course materials:
