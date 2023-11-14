@@ -53,6 +53,8 @@ export const AssignmentListPage = () => {
 		return <div>No assignments</div>
 	}
 
+	console.log("AS", assignments)
+
 	const submittedAssignments = user.courseData[courseId].assignmentSubmissions.map((s) => ({
 		name: s.name,
 		title: s.title,
