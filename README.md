@@ -96,7 +96,7 @@ In this step of the project, we needed to decide on some core design challenges.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Technogies included in this project:
+### Technogies included in this project:
 - React and React Router
 - TailwindCSS
 - Bootstrap
