@@ -3,7 +3,7 @@ import { StoreProvider } from "easy-peasy"
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { Announcements } from "./Announcements"
+import { Announcements, loader as announmentsPageLoader } from "./Announcements"
 import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage"
 import { loader as assignmentLoader, AssignmentPage } from "./AssignmentPage"
 import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout"
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "/:courseId/announcements",
-						loader: ({ params }) => getCourseModules(params.courseId),
+						loader: announmentsPageLoader,
 						element: <Announcements />,
 					},
 					{
