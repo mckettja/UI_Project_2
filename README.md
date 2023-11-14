@@ -71,7 +71,7 @@ In this step of the project, we needed to decide on some core design challenges.
 &nbsp; &nbsp; &nbsp; The final design challenge we wanted to focus on was only supplying our users with valuable information. This was a very common critisism of our current Canvas application. Many users felt that there was far too much information on their screen, most of which was never used by themselves or by the professors to enhance learning. For this, we wanted to break down our pages into components. Each page on our navigation bar (on the left side of our application) can be easily added or removed by one simple change. This means that any unncessesary pages could be removed by a professor to minimize clutter. In our current application, there are minimal pages as after our interviews with students we felt these were the most commonly used in everyday Canvas interaction.
 
 ## Prototype Design
-![alt text](https://github.com/mckettja/UI_Project_2/blob/main/documentation/design_sketch.png?raw=true)
+![alt text](https://github.com/mckettja/UI_Project_2/blob/main/Documentation/design_sketch.png?raw=true)
 
 ## How to Launch Application
 
