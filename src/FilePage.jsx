@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { getFile } from "./mock-database/mock-database";
 
 /** @satisfies {import("react-router-dom").LoaderFunction} */

@@ -1,0 +1,6 @@
+.animal-image {
+	--bg-url: url("/images/halloween-background.jpg");
+	background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), var(--bg-url);
+	background-repeat: no-repeat;
+	background-size: cover;
+}

@@ -8,6 +8,7 @@ import { useLoaderData, useParams } from "react-router-dom"
 import { getPageContent } from "./mock-database/mock-database"
 
 import { useMyStoreActions, useMyStoreState } from "./store"
+import dayjs from "dayjs"
 
 /** @satisfies {import("react-router-dom").LoaderFunction} */
 export const loader = ({ params }) => {
@@ -22,7 +23,8 @@ export const AssignmentPage = () => {
 	const data = /** @type {Awaited<ReturnType<typeof loader>>} */ (useLoaderData())
 	const submitAssignment = useMyStoreActions((actions) => actions.submitAssignment)
 	const user = useMyStoreState((state) => state.user)
-	const changeTreat = useMyStoreActions(actions => actions.changeTreat)
+	const currentDate = useMyStoreState((state) => state.currentDate)
+	const changeTreat = useMyStoreActions((actions) => actions.changeTreat)
 	const [showModal, setShowModal] = useState(false)
 	const [activeTab, setActiveTab] = useState("upload")
 	const [textSubmission, setTextSubmission] = useState("")
@@ -34,37 +36,30 @@ export const AssignmentPage = () => {
 
 	const isAssignmentSubmitted = user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(data.item.name)
 
-	/**
-	 *
-	 * @param {React.FormEvent<HTMLFormElement>} event
-	 */
-	const handleFormSubmit = (event) => {
-		event.preventDefault() // Prevent the button from reloading the page
-		setShowModal(true) // Show the modal on form submission
-	}
-
-	const handleCloseModal = () => {
-		setShowModal(false)
-	}
-
 	const handleSubmitAssignment = () => {
+		const assignmentItem = /** @type {import("./store").AssignmentItem} */ (data.item)
 		submitAssignment({
-			assignment: /** @type {import("./store").AssignmentItem} */ (data.item),
+			assignment: assignmentItem,
 			content: [textSubmission],
 			courseId: courseId,
 		})
-		changeTreat({courseId: courseId, changeFunction: (t) => Math.min(t + 5, 100)})
+		const earlyBonus =
+			dayjs(assignmentItem.end_or_due) > currentDate ? dayjs(assignmentItem.end_or_due).diff(currentDate, "day") : 0
+		const overdueCompensation =
+			dayjs(assignmentItem.end_or_due) < currentDate ? Math.floor(currentDate.diff(assignmentItem.end_or_due, "day") / 2) : 0
+		changeTreat({ courseId: courseId, changeFunction: (t) => Math.min(t + 5 + earlyBonus + overdueCompensation, 100) })
 		setShowModal(false)
 	}
 
 	return (
 		<div>
+			<h2 className="font-bold text-2xl mb-4">{data.item.title}</h2>
 			{!isAssignmentSubmitted && (
 				<>
 					<button type="button" className="rounded-md border-0 bg-red-200 px-4 py-2" onClick={() => setShowModal(true)}>
 						Start Submission
 					</button>
-					<Modal show={showModal} onHide={handleCloseModal}>
+					<Modal show={showModal} onHide={() => setShowModal(false)}>
 						<Modal.Header closeButton>
 							<Modal.Title>Submission Page</Modal.Title>
 						</Modal.Header>
