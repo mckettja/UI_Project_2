@@ -25,7 +25,7 @@ export const NavBar = ({ courseList }) => {
 	}
 
 	return (
-		<nav className="relative flex h-full flex-1 justify-center border-2 border-purple-500 px-12">
+		<nav className="relative flex h-full flex-1 justify-center px-12">
 			<div className="absolute left-0 top-0 p-[inherit]">
 				<p>{user.name}</p>
 				<p>Week: 8</p>

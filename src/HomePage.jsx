@@ -63,11 +63,11 @@ export const HomePage = () => {
 							{module.items.map((moduleItem) => (
 								<li key={moduleItem.name} className="mb-2 hover:underline">
 									{moduleItem.type === "inclass" || moduleItem.type === "tutorial" ? (
-										<Link to={`pages/${moduleItem.name}`}>{moduleItem.title}</Link>
+										<Link to={`pages/${moduleItem.name}`}>📖 {moduleItem.title}</Link>
 									) : moduleItem.type === "assignment" ? (
-										<Link to={`assignments/${moduleItem.name}`}>{moduleItem.title}</Link>
+										<Link to={`assignments/${moduleItem.name}`}>✏️ {moduleItem.title}</Link>
 									) : (
-										<Link to={`files/${moduleItem.name}`}>{moduleItem.title}</Link>
+										<Link to={`files/${moduleItem.name}`}>🔗 {moduleItem.title}</Link>
 									)}
 								</li>
 							))}
