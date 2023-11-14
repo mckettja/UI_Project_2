@@ -82,6 +82,7 @@ In this step of the project, we needed to decide on some core design challenges.
 4. Run `npm run dev`
 
 6. Hold Ctrl + Left Click the local host link in the console
+
 ```cmd
 > smart-desk-ui@0.0.0 dev
 > vite
@@ -93,8 +94,6 @@ In this step of the project, we needed to decide on some core design challenges.
   ➜  Network: use --host to expose
   ➜  press h to show help
 ```
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 ### Technogies included in this project:
 - React and React Router
