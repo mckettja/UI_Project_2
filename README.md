@@ -20,7 +20,9 @@ This project was created by Yale Miller, Josh McKettrick, and Bao Huynh.
    - There should be grades for past assignments, learning modules that have passed, etc. This will allow us to show our application's full functionality.
 
 ## Brainstorming Gamification 
-In this step of the project, we needed to decide on some core design challenges. Below are our design challenges, and our possible ideas for gamification. At the end of this section are the final design choices we made:
+In this step of the project, we needed to decide on some core design challenges. Below are our design challenges, and our possible ideas for gamification. The following section will outline our project characteristics, where we made our final design choices for our application.
+<br />
+<br />
 ### Design Challenge 1: How can we use gamification to make completing assignments and achievements satisfying to the users? What types of games fit into the Canvas setting?
 - Role playing game --> User’s character gets stronger stats after completing tasks.
 - Role playing game --> User get a flashy animation after doing task.
@@ -32,6 +34,8 @@ In this step of the project, we needed to decide on some core design challenges.
 - Platform-based game --> User unlocks new platform game levels after completing a task.  
 - Game-agnostic --> User gets real world currency after doing task.
 - Game-agnostic --> User gets points after doing task and get ranked on a scoreboard.
+<br />
+
 ### Design Challenge 2: How to improve accountability, especially mutual accountability?
 - Peer QA forum --> Encourage students to answer each other's questions, thereby promoting peer support. Recognize and reward active participants in these forums.  
 - Viewing friend's profile and progress as motivational/peer-pressure trigger.
@@ -43,6 +47,8 @@ In this step of the project, we needed to decide on some core design challenges.
 - Peer review system.
 - Pair students with a mentor to regularly check-in.
 - Peer progress journals: Allow students to keep journals of their academic progress and make them shareable with peers, fostering transparency and mutual encouragement.
+<br />
+
 ### Design Challenge 3: How can we show the user only the information/panels that users want to see?
 - Customizable sidebar  
 - Customizable Home page  
@@ -55,7 +61,7 @@ In this step of the project, we needed to decide on some core design challenges.
 - Tool usage statistics are stored internally (unavailable to users) and move to the top of a home page based on all user statistics  
 - Better alert system that shows the user more relevant information
 
-### Final Design Choices
+## Project Characteristics
 &nbsp; &nbsp; &nbsp; Our first design challenge we asked, "How can we gamify current Canvas?". After reviewing our ideas we finally set on an animal themed game. We wanted our users to have pets that they will need to take care of. In our design, we wanted the user to get treats rewarded to their account based on the completion of assignments. We designed our application so that each class will have a dedicated pet. When assignments are completed treats are added to the user's account, which can allow them to feed their pet for each given class. This design is similar to Tamogotchi, in the fact that the point of the game is to keep your pet happy. As time passes your pet will become sad, and if you don't complete assignments they will visually indicate this on the user's interface.
 <br />
 <br />
@@ -65,9 +71,6 @@ In this step of the project, we needed to decide on some core design challenges.
 &nbsp; &nbsp; &nbsp; The final design challenge we wanted to focus on was only supplying our users with valuable information. This was a very common critisism of our current Canvas application. Many users felt that there was far too much information on their screen, most of which was never used by themselves or by the professors to enhance learning. For this, we wanted to break down our pages into components. Each page on our navigation bar (on the left side of our application) can be easily added or removed by one simple change. This means that any unncessesary pages could be removed by a professor to minimize clutter. In our current application, there are minimal pages as after our interviews with students we felt these were the most commonly used in everyday Canvas interaction.
 
 ## Prototype Design
-
-
-## Project Characteristics
 
 
 ## How to Launch Application
