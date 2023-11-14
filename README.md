@@ -77,23 +77,11 @@ In this step of the project, we needed to decide on some core design challenges.
 
 1. Copy this repository to your machine.
    
-3. Install dependencies: `npm install`
+2. Install dependencies: `npm install`
 
-4. Run `npm run dev`
+3. Run: `npm run dev`
 
-6. Hold Ctrl + Left Click the local host link in the console
-
-```cmd
-> smart-desk-ui@0.0.0 dev
-> vite
-
-
-  VITE v4.4.9  ready in 630 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h to show help
-```
+4. Hold Ctrl + Left Click the local host link in the console: `Local:   http://localhost:5173/`
 
 ### Technogies included in this project:
 - React and React Router
