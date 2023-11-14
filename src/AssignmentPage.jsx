@@ -53,6 +53,7 @@ export const AssignmentPage = () => {
 
 	return (
 		<div>
+			<h2 className="font-bold text-2xl mb-4">{data.item.title}</h2>
 			{!isAssignmentSubmitted && (
 				<>
 					<button type="button" className="rounded-md border-0 bg-red-200 px-4 py-2" onClick={() => setShowModal(true)}>

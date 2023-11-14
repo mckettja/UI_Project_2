@@ -7,11 +7,11 @@ import { Announcements, loader as announmentsPageLoader } from "./Announcements"
 import { loader as assignmentListLoader, AssignmentListPage } from "./AssignmentListPage"
 import { loader as assignmentLoader, AssignmentPage } from "./AssignmentPage"
 import { CourseLayout, loader as courseLayoutLoader } from "./CourseLayout"
+import { DocumentPage, loader as documentPageLoader } from "./DocumentPage"
 import { FilePage, loader as filePageLoader } from "./FilePage"
 import "./global.scss"
 import { Grades } from "./Grades"
 import { HomePage, loader as homePageLoader } from "./HomePage"
-import { getPageContent } from "./mock-database/mock-database"
 import { Shell, loader as shellLoader } from "./Shell"
 import { store } from "./store"
 import { Syllabus, loader as syllabusPageLoader } from "./Syllabus"
@@ -70,8 +70,8 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "/:courseId/pages/:pageName",
-						loader: ({ params }) => getPageContent(params.courseId, params.pageName),
-						element: <div>This is a page from module</div>,
+						loader: documentPageLoader,
+						element: <DocumentPage />
 					},
 					{
 						path: "/:courseId/files/:fileName",
