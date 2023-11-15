@@ -25,7 +25,8 @@ export const AssignmentPage = () => {
 	const user = useMyStoreState((state) => state.user)
 	const currentDate = useMyStoreState((state) => state.currentDate)
 	const changeTreat = useMyStoreActions((actions) => actions.changeTreat)
-	const [showModal, setShowModal] = useState(false)
+	const [showAssignmentInputModal, setShowAssignmentInputModal] = useState(false)
+	const [showViewAssignmentModal, setShowViewAssignmentModal] = useState(false)
 	const [activeTab, setActiveTab] = useState("upload")
 	const [textSubmission, setTextSubmission] = useState("")
 	const { courseId } = useParams()
@@ -34,7 +35,9 @@ export const AssignmentPage = () => {
 		return null
 	}
 
-	const isAssignmentSubmitted = user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(data.item.name)
+	const assignmentSubmission = user.courseData[courseId].assignmentSubmissions.find((s) => s.name === data.item.name)
+
+	const isAssignmentSubmitted = Boolean(assignmentSubmission)
 
 	const handleSubmitAssignment = () => {
 		const assignmentItem = /** @type {import("./store").AssignmentItem} */ (data.item)
@@ -48,18 +51,22 @@ export const AssignmentPage = () => {
 		const overdueCompensation =
 			dayjs(assignmentItem.end_or_due) < currentDate ? Math.floor(currentDate.diff(assignmentItem.end_or_due, "day") / 2) : 0
 		changeTreat({ courseId: courseId, changeFunction: (t) => Math.min(t + 5 + earlyBonus + overdueCompensation, 100) })
-		setShowModal(false)
+		setShowAssignmentInputModal(false)
 	}
 
 	return (
 		<div>
-			<h2 className="font-bold text-2xl mb-4">{data.item.title}</h2>
+			<h2 className="mb-4 text-2xl font-bold">{data.item.title}</h2>
 			{!isAssignmentSubmitted && (
 				<>
-					<button type="button" className="rounded-md border-0 bg-red-200 px-4 py-2" onClick={() => setShowModal(true)}>
+					<button
+						type="button"
+						className="rounded-md border-0 bg-red-200 px-4 py-2"
+						onClick={() => setShowAssignmentInputModal(true)}
+					>
 						Start Submission
 					</button>
-					<Modal show={showModal} onHide={() => setShowModal(false)}>
+					<Modal show={showAssignmentInputModal} onHide={() => setShowAssignmentInputModal(false)}>
 						<Modal.Header closeButton>
 							<Modal.Title>Submission Page</Modal.Title>
 						</Modal.Header>
@@ -94,7 +101,7 @@ export const AssignmentPage = () => {
 							<Button variant="primary" onClick={handleSubmitAssignment} className="no-hover-effect text-black">
 								Submit
 							</Button>
-							<Button variant="danger" onClick={() => setShowModal(false)} className="text-black">
+							<Button variant="danger" onClick={() => setShowAssignmentInputModal(false)} className="text-black">
 								Cancel
 							</Button>
 						</Modal.Footer>
@@ -102,9 +109,26 @@ export const AssignmentPage = () => {
 				</>
 			)}
 			{isAssignmentSubmitted && (
-				<button type="button" className="cursor-not-allowed rounded-md border-0 bg-gray-400 px-4 py-2" disabled>
-					Submitted
-				</button>
+				<div className="flex gap-3 items-center">
+					<button type="button" className="cursor-not-allowed rounded-md border-0 bg-gray-400 px-4 py-2" disabled>
+						Submitted
+					</button>
+					<p>
+						<button className="underline" onClick={() => setShowViewAssignmentModal(true)}>View submission</button> - Grade: {assignmentSubmission?.grade} /{" "}
+						{assignmentSubmission?.points}
+					</p>
+					<Modal show={showViewAssignmentModal} onHide={() => setShowViewAssignmentModal(false)}>
+						<Modal.Header closeButton>
+							<Modal.Title>{assignmentSubmission?.title} submission</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>{assignmentSubmission?.content.join("\n")}</Modal.Body>
+						<Modal.Footer>
+							<Button variant="secondary" onClick={() => setShowViewAssignmentModal(false)} className="text-black">
+								Close
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				</div>
 			)}
 			<div dangerouslySetInnerHTML={{ __html: data.content }} className="page w-auto"></div>
 		</div>

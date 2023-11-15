@@ -55,9 +55,9 @@ export const AssignmentListPage = () => {
 
 	console.log("AS", assignments)
 
-	const submittedAssignments = assignments.filter(
-		(a) => user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
-	)
+	const submittedAssignments = assignments
+		.filter((a) => user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name))
+		.map((a) => ({ ...a, isGraded: user.courseData[courseId].assignmentSubmissions.find((s) => s.name === a.name)?.grade }))
 
 	const unSubmittedAssignments = assignments.filter(
 		(a) => !user.courseData[courseId].assignmentSubmissions.map((s) => s.name).includes(a.name),
@@ -91,7 +91,7 @@ export const AssignmentListPage = () => {
 						<ListGroup>
 							{overDueAssignments.sort(compareAssignments).map((assignment) => (
 								<ListGroup.Item key={assignment.name}>
-									<AssignmentListItem assignment={assignment} />
+									<AssignmentListItem assignment={assignment} isOverdue />
 								</ListGroup.Item>
 							))}
 						</ListGroup>
@@ -106,7 +106,7 @@ export const AssignmentListPage = () => {
 						<ListGroup>
 							{submittedAssignments.sort(compareAssignments).map((assignment) => (
 								<ListGroup.Item key={assignment.name}>
-									<AssignmentListItem assignment={assignment} />
+									<AssignmentListItem assignment={assignment} isGraded={!!assignment.isGraded} />
 								</ListGroup.Item>
 							))}
 						</ListGroup>
@@ -120,18 +120,25 @@ export const AssignmentListPage = () => {
 /**
  * @typedef {Object} AssignmentListItemProps
  * @property {import("./mock-database/mock-database").AssignmentItem} assignment
+ * @property {boolean} [isOverdue]
+ * @property {boolean} [isGraded] * 
  */
 
 /**
  * @param {AssignmentListItemProps} props
  */
-const AssignmentListItem = ({ assignment }) => {
+const AssignmentListItem = ({ assignment, isOverdue = false, isGraded = false }) => {
 	return (
 		<>
 			<Link to={`${assignment.name}`} className="relative text-xl font-bold">
 				{assignment.type === "exams" ? "🎓" : "✏️"} {assignment.title}
 			</Link>
-			<p className="absolute right-3 top-2 rounded-2xl border-2 border-orange-600 px-2 py-1 text-xs text-orange-600">Graded</p>
+			{isOverdue && (
+				<p className="absolute right-3 top-2 rounded-2xl border-2 border-blue-600 px-2 py-1 text-xs text-blue-600">Overdue</p>
+			)}
+			{isGraded && (
+				<p className="absolute right-3 top-2 rounded-2xl border-2 border-orange-600 px-2 py-1 text-xs text-orange-600">Graded</p>
+			)}
 			<p>Due at: {assignment.end_or_due}</p>
 		</>
 	)
