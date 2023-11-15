@@ -1,6 +1,6 @@
 # We Canvas Better
 
-This project was created by Yale Miller, Josh McKettrick, and Bao Huynh.
+This project was created by Yale Miller, Josh McKettrick, and Bao Huynh. Souce code on [Github](https://github.com/mckettja/UI_Project_2) and deployed publically on [Vercel](https://ui-project-2.vercel.app/).
 
 ## Project Summary and Descripion
 We implemented a new and improved version of the Canvas application, called **"We Canvas Better"**. Canvas is the current application that the University of Cincinnati uses to post class assignments, grades, and related class materials. Many students have complaints with our current Canvas system, so we are tasked with implement a better reimagined system with gamification features that make it fun and exciting for students to submit and complete their homework.
@@ -112,21 +112,99 @@ Therefore, in 'We Canvas Better' wanted to provide consistency. The left-side na
 ## Prototype Design Sketch
 ![alt text](https://github.com/mckettja/UI_Project_2/blob/main/Documentation/design_sketch.png?raw=true)
 
+## Features details and UI screenshots
 
-## Prototype Design Sketch
-![alt text](https://github.com/mckettja/UI_Project_2/blob/main/Documentation/design_sketch.png?raw=true)
+### C-goal features: Basic Course elements
 
-## [Video Demonstration](https://drive.google.com/file/d/1UqyleApAPDoNYJpxQvC5txAkK66iKuWR/view?usp=sharing)
+As a course management platform, our UI ensures that students can accomplish the following basic tasks:
+
+- View the syllabus
+- View all announcements 
+- View a list of presentations and other course materials, organized by modules.   
+- See upcoming assignments
+- See their progress in the course - use your gameification approach
+
+With the navigation bar placed on the left side, students can quickly switch between the Syllabus, Announcements, or Modules tab. The Right side bar containts the list of all unsubmitted assignments so users are always aware of what to do next.
+
+1. Screenshot of modules page. We made use of emojis for users to easily distinguish between module items: pencil ✏️ for assignments, link 🔗 for lecture presentations, and 📖 for in-class readings
+
+![](/Documentation/modules-page-screenshot.jpeg)
+
+2. Screenshot of assignments page, with the list of upcoming assignments, overdue assignments, and submitted assignments
+
+![](/Documentation/assignments-page-screenshot.jpeg)
+
+3. Screenshot of Syllabus page
+
+![](/Documentation/syllabus-page-screenshot.jpeg)
+
+4. Screenshot of Announcements page. We didn&apos;t have time to generate better mock announcements data. Here, we made up random announcements based on the modules; each announcement says a module has been released
+
+![](/Documentation/announcements-page-screenshot.jpeg)
+
+### B-goal features: More capablities, pets, and treats
+
+For B-goal, we extend the application with extra capabilities to:
+- Submit assignments (text entry or file upload)
+- View grades
+- View course materials and download presentations
+- Have a Zoom connection navigation item
+- Plan their work with a todo list
+
+1. Submit assignments screenshot. Students can submit file upload or text entry
+
+![](/Documentation/assignment-submission-screenshot.jpeg)
+
+2. Grades page submission
+
+![](/Documentation/grades-page-screenshot.jpeg)
+
+3. Viewing course material. If it is a presentation file, the app will prompt the user to download it
+
+![](/Documentation/course-material-screenshot.jpeg)
+
+At this stage, we also implemented the course navigation bar, which also doubles as the pet list. Each pet is associated to each course and have 3 statuses (sad, neutral, happy.). Users can click on the **plus** button to use treat to increase their pet's mood
+
+We also implement functionality to **increase treat** when user submit assignment:
+- User gets 5 treats whenever they submit
+- Add in _early bird bonus_: one more treat for each day they submit earlier than deadline
+
+Screenshot of the pets associated to each course and their 3 statuses (sad, neutral, and happy). The treat number is shown under each pet
+
+![](/Documentation/pet-screenshot.jpeg)
+
+### A-goal features: User profile and Admin buttons
+
+For A-goal, we develop simulation buttons to Switch User profile, Go to the next day, and set treats number to maximum
+
+- As the simulation fast forward in days, users should be the pet mood decrease by 5 points everyday.
+
+Admin button screenshot
+
+![](/Documentation/admin-buttons-screenshot.jpeg)
 
 ## How to Launch Application
 
 1. Copy this repository to your machine.
    
-2. Install dependencies: `npm install`
+3. Install dependencies: `npm install`
 
-3. Run: `npm run dev`
+4. Run `npm run dev`. The result should be similar to this
+```bash
+> ui-project-2@0.0.0 dev
+> vite
 
-4. Hold Ctrl + Left Click the local host link in the console: `Local:   http://localhost:5173/`
+
+  VITE v4.4.9  ready in 630 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+```
+
+5. Access the application at 'http://localhost:5173'
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 ### Technogies included in this project:
 - React
