@@ -112,6 +112,36 @@ Therefore, in 'We Canvas Better' wanted to provide consistency. The left-side na
 ## Prototype Design Sketch
 ![alt text](https://github.com/mckettja/UI_Project_2/blob/main/Documentation/design_sketch.png?raw=true)
 
+## Features details and UI screenshots
+
+### C-goal features: Basic Course elements
+
+As a course management platform, our UI ensures that students can accomplish the following basic tasks:
+
+- View the syllabus
+- View all announcements 
+- View a list of presentations and other course materials, organized by modules.   
+- See upcoming assignments
+- See their progress in the course - use your gameification approach
+
+With the navigation bar placed on the left side, students can quickly switch between the Syllabus, Announcements, or Modules tab. The Right side bar containts the list of all unsubmitted assignments so users are always aware of what to do next.
+
+1. Screenshot of modules page. We made use of emojis for users to easily distinguish between module items: pencil ✏️ for assignments, link 🔗 for lecture presentations, and 📖 for in-class readings
+
+![](/Documentation/modules-page-screenshot.jpeg)
+
+2. Screenshot of assignments page, with the list of upcoming assignments, overdue assignments, and submitted assignments
+
+![](/Documentation/assignments-page-screenshot.jpeg)
+
+3. Screenshot of Syllabus page
+
+![](/Documentation/syllabus-page-screenshot.jpeg)
+
+4. Screenshot of Announcements page. We didn&apos;t have time to generate better mock announcements data. Here, we made up random announcements based on the modules; each announcement says a module has been released
+
+![](/Documentation/announcements-page-screenshot.jpeg)
+
 ## How to Launch Application
 
 1. Copy this repository to your machine.
