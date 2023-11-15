@@ -1,11 +1,11 @@
-# Project We Canvas Better
+# We Canvas Better
 
 This project was created by Yale Miller, Josh McKettrick, and Bao Huynh.
 
 ## Project Summary and Descripion
-We implemented a new and improved version of the Canvas application, called **"We Canvas Better"**. Canvas is the current application that the University of Cincinnati uses to post class assignments, grades, and related class materials. Many students have complaints with our current Canvas system, so we were tasked to take our critisims and implement them in a reimagined system. We also added in gamification features in order to make it fun and exciting for students to submit and complete their homework.
+We implemented a new and improved version of the Canvas application, called **"We Canvas Better"**. Canvas is the current application that the University of Cincinnati uses to post class assignments, grades, and related class materials. Many students have complaints with our current Canvas system, so we are tasked with implement a better reimagined system with gamification features that make it fun and exciting for students to submit and complete their homework.
 
-Below are some guidelines to how our application was designed.
+Below are some guidelines and requirements to how our application was designed and implemented.
 - Users should be able to select their own profile.
 - Users should be enrolled in three courses with fully implemented course materials:
    - User Interface
@@ -25,19 +25,39 @@ Below are some guidelines to how our application was designed.
 In the first step of the project, we focused on design and brainstromed on some core design challenges.
 
 ### Design Challenge 1: How can we use gamification to make completing assignments and achievements satisfying to the users? What types of games fit into the Canvas setting?
-- Role playing game --> User’s character gets stronger stats after completing tasks.
-- Role playing game --> User get a flashy animation after doing task.
-- Animal-themed game --> User gets cute pets after doing task.
-- Dating simulation --> User gets interactions with their dream “dates” after doing task.
-- Mystery/Puzzle games --> User gets new clues/hints about the puzzle after doing task.
-- Role-playing --> Only change the wording and aesthetics of the interface based on user’s desired role without having an actual game system.
-- Story-based game --> User gets new excerpts to a purely entertainment-based story by completing tasks.  
-- Platform-based game --> User unlocks new platform game levels after completing a task.  
-- Game-agnostic --> User gets real world currency after doing task.
-- Game-agnostic --> User gets points after doing task and get ranked on a scoreboard.
-<br />
+
+![](/Documentation/design-challenge-1.png)
+
+1. Role playing game --> User’s character gets stronger stats after completing tasks.
+2. Role playing game --> User get a flashy animation after doing task.
+3. Animal-themed game --> User gets cute pets after doing task.
+4. Dating simulation --> User gets interactions with their dream “dates” after doing task.
+5. Mystery/Puzzle games --> User gets new clues/hints about the puzzle after doing task.
+6. Role-playing --> Only change the wording and aesthetics of the interface based on user’s desired role without having an actual game system.
+7. Story-based game --> User gets new excerpts to a purely entertainment-based story by completing tasks.  
+8. Platform-based game --> User unlocks new platform game levels after completing a task.  
+9. Game-agnostic --> User gets real world currency after doing task.
+10. Game-agnostic --> User gets points after doing task and get ranked on a scoreboard.
+
+**Deeper design sketches**
+![](/Documentation/design-challenge-1-deeper-sketches.png)
+
+1. Role playing game --> User’s character gets stronger stats after completing tasks 
+- User character gains EXP (experience points) 
+- User character basic stats to manually choose to level: Strength, Stamina, Speed, etc. 
+- User character gain stats based on type of assignment 
+- User gain powerups after milestone (10 task, or 50 points, etc.) 
+2. Animal-themed game --> User gets cute pets after doing task 
+- User gains an in-game currency when tasks are completed 
+- User gains more currency when assignments are worth more points 
+- User can use their currency to buy a name for their pet, change color/breed of their pet, etc. 
+- Pets can be ‘levelled up’ with currency. Example: cat --> cheetah --> lion
+
 
 ### Design Challenge 2: How to improve accountability, especially mutual accountability?
+
+![](/Documentation/design-challenge-2.png)
+
 - Peer QA forum --> Encourage students to answer each other's questions, thereby promoting peer support. Recognize and reward active participants in these forums.  
 - Viewing friend's profile and progress as motivational/peer-pressure trigger.
 - Accountability partners become a group that can chat, discuss, and share information to gain points, in-game currency, EXP, or something else.
@@ -48,9 +68,15 @@ In the first step of the project, we focused on design and brainstromed on some 
 - Peer review system.
 - Pair students with a mentor to regularly check-in.
 - Peer progress journals: Allow students to keep journals of their academic progress and make them shareable with peers, fostering transparency and mutual encouragement.
-<br />
+
+**Deeper design sketches**
+
+![](/Documentation/design-challenge-2-deeper-sketches.png)
 
 ### Design Challenge 3: How can we show the user only the information/panels that users want to see?
+
+![](/Documentation/design-challenge-3.png)
+
 - Customizable sidebar  
 - Customizable Home page  
 - Town design (like gather.town)  
@@ -61,6 +87,11 @@ In the first step of the project, we focused on design and brainstromed on some 
 - Customized ‘hot’ buttons allow users to quickly access desired information  
 - Tool usage statistics are stored internally (unavailable to users) and move to the top of a home page based on all user statistics  
 - Better alert system that shows the user more relevant information
+
+**Deeper design sketches**
+
+![](/Documentation/design-challenge-3-deeper-sketches.png)
+
 
 ## Design decisions and Project features overview
 
@@ -87,11 +118,9 @@ Therefore, in 'We Canvas Better' wanted to provide consistency. The left-side na
    
 3. Install dependencies: `npm install`
 
-4. Run `npm run dev`
-
-6. Hold Ctrl + Left Click the local host link in the console
-```cmd
-> smart-desk-ui@0.0.0 dev
+4. Run `npm run dev`. The result should be similar to this
+```bash
+> ui-project-2@0.0.0 dev
 > vite
 
 
@@ -102,9 +131,14 @@ Therefore, in 'We Canvas Better' wanted to provide consistency. The left-side na
   ➜  press h to show help
 ```
 
+5. Access the application at 'http://localhost:5173'
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 ### Technogies included in this project:
-- React and React Router
+- React
+- React Router
+- Easy-Peasy React state management
 - TailwindCSS
 - Bootstrap
+- Dayjs library for date-time manipulation
