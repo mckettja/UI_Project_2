@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from "react-router-dom"
 import { NavBar } from "./components/NavBar"
 import { useMyStoreActions } from "./store"
 import { getAllCourses } from "./mock-database/mock-database"
+import ScrollToTop from "./components/ScrollToTop"
 
 /** @satisfies {import("react-router-dom").LoaderFunction} */
 export const loader = () => {
@@ -54,7 +55,8 @@ export function Shell() {
 
 	return (
 		<>
-			<header className="flex items-center justify-between px-8 mb-4">
+			<ScrollToTop />
+			<header className="mb-4 flex items-center justify-between px-8">
 				<div>
 					<Dropdown autoClose="outside" onSelect={handleDropdownSelect}>
 						<Dropdown.Toggle variant="success" id="dropdown-basic" className="text-black">
@@ -63,16 +65,10 @@ export function Shell() {
 
 						<Dropdown.Divider />
 						<Dropdown.Menu>
-							<Dropdown.Item eventKey="switch-user">
-								Switch User
-							</Dropdown.Item>
+							<Dropdown.Item eventKey="switch-user">Switch User</Dropdown.Item>
 							<Dropdown.Header>Admin</Dropdown.Header>
-							<Dropdown.Item eventKey="next-day">
-								Admin: Next day
-							</Dropdown.Item>
-							<Dropdown.Item eventKey="max-treats">
-								Admin: 100 treats
-							</Dropdown.Item>
+							<Dropdown.Item eventKey="next-day">Admin: Next day</Dropdown.Item>
+							<Dropdown.Item eventKey="max-treats">Admin: 100 treats</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>
 				</div>
