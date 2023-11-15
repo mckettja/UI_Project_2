@@ -1,6 +1,6 @@
 # We Canvas Better
 
-This project was created by Yale Miller, Josh McKettrick, and Bao Huynh.
+This project was created by Yale Miller, Josh McKettrick, and Bao Huynh. Souce code on [Github](https://github.com/mckettja/UI_Project_2) and deployed publically on [Vercel](https://ui-project-2.vercel.app/).
 
 ## Project Summary and Descripion
 We implemented a new and improved version of the Canvas application, called **"We Canvas Better"**. Canvas is the current application that the University of Cincinnati uses to post class assignments, grades, and related class materials. Many students have complaints with our current Canvas system, so we are tasked with implement a better reimagined system with gamification features that make it fun and exciting for students to submit and complete their homework.
@@ -141,6 +141,47 @@ With the navigation bar placed on the left side, students can quickly switch bet
 4. Screenshot of Announcements page. We didn&apos;t have time to generate better mock announcements data. Here, we made up random announcements based on the modules; each announcement says a module has been released
 
 ![](/Documentation/announcements-page-screenshot.jpeg)
+
+### B-goal features: More capablities, pets, and treats
+
+For B-goal, we extend the application with extra capabilities to:
+- Submit assignments (text entry or file upload)
+- View grades
+- View course materials and download presentations
+- Have a Zoom connection navigation item
+- Plan their work with a todo list
+
+1. Submit assignments screenshot. Students can submit file upload or text entry
+
+![](/Documentation/assignment-submission-screenshot.jpeg)
+
+2. Grades page submission
+
+![](/Documentation/grades-page-screenshot.jpeg)
+
+3. Viewing course material. If it is a presentation file, the app will prompt the user to download it
+
+![](/Documentation/course-material-screenshot.jpeg)
+
+At this stage, we also implemented the course navigation bar, which also doubles as the pet list. Each pet is associated to each course and have 3 statuses (sad, neutral, happy.). Users can click on the **plus** button to use treat to increase their pet's mood
+
+We also implement functionality to **increase treat** when user submit assignment:
+- User gets 5 treats whenever they submit
+- Add in _early bird bonus_: one more treat for each day they submit earlier than deadline
+
+Screenshot of the pets associated to each course and their 3 statuses (sad, neutral, and happy). The treat number is shown under each pet
+
+![](/Documentation/pet-screenshot.jpeg)
+
+### A-goal features: User profile and Admin buttons
+
+For A-goal, we develop simulation buttons to Switch User profile, Go to the next day, and set treats number to maximum
+
+- As the simulation fast forward in days, users should be the pet mood decrease by 5 points everyday.
+
+Admin button screenshot
+
+![](/Documentation/admin-buttons-screenshot.jpeg)
 
 ## How to Launch Application
 
