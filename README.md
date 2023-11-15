@@ -187,6 +187,30 @@ Admin button screenshot
 
 ![](/Documentation/admin-buttons-screenshot.jpeg)
 
+## Division of labor
+
+- Yale Miller
+  - Interviewed users
+  - Made prototype design sketches
+  - Coded the pet navigation bar and treat reward system
+  - Coded the Assignment submission text/file upload
+  - Coded the admin buttons (along with Bao)
+  - Collaborative helped write the documentation
+
+- Bao Huynh
+  - Interview users
+  - Brainstormed design challenges ideas
+  - Coded the skeleton layout of the application and the Profile dropdown and admin buttons (along with Yale)
+  - Coded the Module, Assignments, and Grades page
+  - Collaborative helped write the documentation
+
+- Josh McKettrick
+  - Interview users
+  - Brainstormed design challenges ideas
+  - Coded the right side assignment todolist bar
+  - Coded the Zoom, Announcements, and Syllabus page
+  - Collaborative helped write the documentation
+
 ## How to Launch Application
 
 1. Copy this repository to your machine.
@@ -194,6 +218,7 @@ Admin button screenshot
 3. Install dependencies: `npm install`
 
 4. Run `npm run dev`. The result should be similar to this
+
 ```bash
 > ui-project-2@0.0.0 dev
 > vite
