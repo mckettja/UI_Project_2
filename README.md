@@ -20,7 +20,7 @@ This project was created by Yale Miller, Josh McKettrick, and Bao Huynh.
    - There should be grades for past assignments, learning modules that have passed, etc. This will allow us to show our application's full functionality.
 
 ## Brainstorming Gamification 
-In this step of the project, we needed to decide on some core design challenges. Below are our design challenges, and our possible ideas for gamification. The following section will outline our project characteristics, where we made our final design choices for our application.
+&nbsp; &nbsp; &nbsp; In this step of the project, we needed to decide on some core design challenges. Below are our design challenges, and our possible ideas for gamification. The following section will outline our project characteristics, where we made our final design choices for our application.
 <br />
 <br />
 ### Design Challenge 1: How can we use gamification to make completing assignments and achievements satisfying to the users? What types of games fit into the Canvas setting?
@@ -72,6 +72,8 @@ In this step of the project, we needed to decide on some core design challenges.
 
 ## Prototype Design Sketch
 ![alt text](https://github.com/mckettja/UI_Project_2/blob/main/Documentation/design_sketch.png?raw=true)
+
+## [Video Demonstration]()
 
 ## How to Launch Application
 
