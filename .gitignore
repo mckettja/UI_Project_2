@@ -8,6 +8,7 @@
 /docs/.vitepress/cache
 /packages/vite/LICENSE
 dist
+alterna_Canvas/dist
 node_modules
 .vit
 temp

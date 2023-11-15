@@ -2,6 +2,10 @@
 
 This project was created by Yale Miller, Josh McKettrick, and Bao Huynh. Souce code on [Github](https://github.com/mckettja/UI_Project_2) and deployed publically on [Vercel](https://ui-project-2.vercel.app/).
 
+## Video demonstration
+
+[Video demonstration](https://drive.google.com/file/d/1UqyleApAPDoNYJpxQvC5txAkK66iKuWR/view)
+
 ## Project Summary and Descripion
 We implemented a new and improved version of the Canvas application, called **"We Canvas Better"**. Canvas is the current application that the University of Cincinnati uses to post class assignments, grades, and related class materials. Many students have complaints with our current Canvas system, so we are tasked with implement a better reimagined system with gamification features that make it fun and exciting for students to submit and complete their homework.
 
